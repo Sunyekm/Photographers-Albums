@@ -83,6 +83,7 @@
 		8C7D595316C47CE700DA099D /* PhotographersAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				8C7D597016C48E8E00DA099D /* Classes */,
 				8C7D595C16C47CE700DA099D /* PAAppDelegate.h */,
 				8C7D595D16C47CE700DA099D /* PAAppDelegate.m */,
 				8C7D596516C47CE700DA099D /* MainStoryboard.storyboard */,
@@ -105,6 +106,13 @@
 				8C7D596316C47CE700DA099D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8C7D597016C48E8E00DA099D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
