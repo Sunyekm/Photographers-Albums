@@ -309,6 +309,7 @@
 				8C7D596F16C47CE700DA099D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
