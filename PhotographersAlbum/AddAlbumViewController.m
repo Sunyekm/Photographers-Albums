@@ -1,18 +1,18 @@
 //
-//  PAViewController.m
+//  AddAlbumViewController.m
 //  PhotographersAlbum
 //
-//  Created by Ye Sun on 2013-03-12.
+//  Created by Ye Sun on 2013-03-13.
 //  Copyright (c) 2013 bcit. All rights reserved.
 //
 
-#import "PAViewController.h"
+#import "AddAlbumViewController.h"
 
-@interface PAViewController ()
+@interface AddAlbumViewController ()
 
 @end
 
-@implementation PAViewController
+@implementation AddAlbumViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
