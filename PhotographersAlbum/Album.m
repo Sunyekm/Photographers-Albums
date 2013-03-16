@@ -12,17 +12,28 @@
 
 -(void) addPhoto : (Photo *) photo
 {
-    [self.photos removeObject:photo];
-}
-
-
--(void) removePhoto: (Photo *) photo
-{
     [self.photos addObject:photo];
 }
 
 
--(NSMutableArray *) photoCollection;
+ -(id) initWithTitle: (NSString *) title
+{
+    //self = [self init];
+    self = [super init];
+    self.title = title;
+    return self;
+}
+
+
+
+-(void) removePhoto: (Photo *) photo
+{
+    [self.photos removeObject:photo];
+}
+
+
+/*
+ -(NSMutableArray *) photos;
 {
     if (!_photos)
     {
@@ -31,7 +42,21 @@
     
     return _photos;
 }
+ */
 
+-(Photo *)coverPhoto;
+{
+    if (!_coverPhoto)
+    {
+        _coverPhoto = [self.photos objectAtIndex:0];
+    }
+    return  _coverPhoto;
+}
+
+-(void) changeTitle: (NSString *) newTitle
+{
+    self.title = newTitle;
+}
 
 -(NSInteger) countPhotos
 {

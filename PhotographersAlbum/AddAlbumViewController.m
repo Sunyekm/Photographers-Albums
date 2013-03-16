@@ -8,11 +8,15 @@
 
 #import "AddAlbumViewController.h"
 
+
+
+
 @interface AddAlbumViewController ()
 
 @end
 
 @implementation AddAlbumViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +26,7 @@
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -35,4 +40,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)createAlbum:(UIButton *)sender
+{
+    if (![self.albumNameTextField.text isEqualToString:@""])
+    {
+        [self.albums createAlbum:self.albumNameTextField.text];
+    }
+    else
+    {
+        [self.albums createAlbum:@"New Album"];
+        //NSLog(@"Created without a title, %d", self.albums.count);
+    }
+    
+    
+    [self.delegate AddAlbumViewControllerFinished];
+    
+    
+    
+}
+
+- (IBAction)cancelCreateAlbum:(UIButton *)sender
+{
+    
+    
+    [self.delegate AddAlbumViewControllerFinished];
+    
+}
 @end

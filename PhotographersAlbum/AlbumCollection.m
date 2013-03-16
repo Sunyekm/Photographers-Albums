@@ -10,4 +10,27 @@
 
 @implementation AlbumCollection
 
+-(NSMutableArray *) albums
+{
+    if (!_albums) _albums =  [[NSMutableArray alloc] init];
+    return  _albums;
+}
+
+-(void) createAlbum: (NSString *) title
+{
+    Album *album = [[Album alloc] initWithTitle:title];
+    
+    [self.albums addObject:album];
+    
+}
+-(void) removeAlbum: (Album *) album
+{
+
+}
+
+-(NSInteger) count
+{
+    return [self.albums count];
+}
+
 @end

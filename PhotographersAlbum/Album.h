@@ -13,9 +13,11 @@
 
 @property (strong, nonatomic) NSMutableArray *photos; //Photo
 @property (strong, nonatomic) NSDate *dateCreated;
-@property (strong, nonatomic) NSString *titlle;
+@property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) Photo *coverPhoto;
 
+-(id) initWithTitle: (NSString *) title;
+-(void) changeTitle: (NSString *) newTitle;
 -(void) addPhoto : (Photo *) photo;
 -(void) removePhoto: (Photo *) photo;
 -(NSInteger) countPhotos;

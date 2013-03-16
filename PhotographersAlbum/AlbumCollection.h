@@ -11,10 +11,11 @@
 
 @interface AlbumCollection : NSObject
 
-@property (strong, nonatomic) NSMutableArray *albums;
+@property (strong, nonatomic) NSMutableArray *albums; //Album
 
--(void) createAlbum;
+-(void) createAlbum: (NSString *) title;
 -(void) removeAlbum: (Album *) album;
+-(NSInteger) count;
 
 
 

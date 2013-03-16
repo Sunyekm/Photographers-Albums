@@ -22,19 +22,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dxv-Wy-wuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="-1307"/>
+            <point key="canvasLocation" x="269" y="-1804"/>
         </scene>
-        <!--View Controller-->
+        <!--PAViewController-->
         <scene sceneID="7Aa-d6-gMq">
             <objects>
-                <viewController id="hZs-6o-1HF" customClass="PAViewController" sceneMemberID="viewController">
+                <viewController id="hZs-6o-1HF" userLabel="PAViewController" customClass="PAViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YBn-su-Uga">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="08B-Ct-wqj">
                                 <color key="backgroundColor" red="1" green="0.45551910070000001" blue="0.69632074850000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="44"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="qX4-Kf-NGQ">
                                     <size key="itemSize" width="250" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,7 +41,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Album Cell" id="KFP-5B-sdM">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCell" id="KFP-5B-sdM" customClass="PAAlbumCoverCell">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -55,7 +54,7 @@
                                                         <constraint firstAttribute="height" constant="180" id="eAB-yd-8WZ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM3-tS-7JS">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM3-tS-7JS">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="92" id="Yvg-qu-S0Z"/>
                                                     </constraints>
@@ -72,8 +71,17 @@
                                             <constraint firstItem="Q8O-7K-QDw" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" constant="20" type="default" id="Vr7-8u-lJa"/>
                                             <constraint firstItem="DM3-tS-7JS" firstAttribute="centerX" secondItem="KFP-5B-sdM" secondAttribute="centerX" type="default" id="wK9-FP-Tw7"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="albumTitleLabel" destination="DM3-tS-7JS" id="RxZ-1O-2jB"/>
+                                            <outlet property="coverPhoto" destination="Q8O-7K-QDw" id="IF6-Io-vt5"/>
+                                            <segue destination="1eM-yx-uEe" kind="push" identifier="PushAlbumView" id="et0-Uo-UBt"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hZs-6o-1HF" id="yKL-jg-Ymy"/>
+                                    <outlet property="delegate" destination="hZs-6o-1HF" id="Xet-LT-6vP"/>
+                                </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="pcD-gT-WKg">
                                 <items>
@@ -84,13 +92,16 @@
                                 <items>
                                     <barButtonItem title="New Album" id="MKQ-ee-YXD">
                                         <connections>
-                                            <segue destination="sZu-p3-JV4" kind="modal" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="Jdl-Lj-cwT"/>
+                                            <segue destination="sZu-p3-JV4" kind="modal" identifier="CreateNewAlbum" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="Jdl-Lj-cwT"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Remove Album" id="ETV-wV-xUc"/>
-                                    <barButtonItem title="Add Photos" id="ZzU-V1-a2M"/>
                                     <barButtonItem title="Settings" id="Taf-Fx-GKw"/>
-                                    <barButtonItem title="Help" id="DUN-9q-UMn"/>
+                                    <barButtonItem title="Help" id="DUN-9q-UMn">
+                                        <connections>
+                                            <action selector="tempHelp:" destination="hZs-6o-1HF" id="FJa-Wn-Kc3"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -113,49 +124,189 @@
                     <navigationItem key="navigationItem" id="Bou-w1-yCr"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="AlbumCollectionView" destination="08B-Ct-wqj" id="Gjw-cE-517"/>
+                        <outlet property="albumCollectionView" destination="08B-Ct-wqj" id="YSt-rD-7Us"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXH-OZ-dEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1428" y="-1307"/>
+            <point key="canvasLocation" x="1549" y="-1804"/>
         </scene>
-        <!--View Controller-->
+        <!--Album View Controller-->
         <scene sceneID="LIb-iQ-y4a">
             <objects>
-                <viewController id="1eM-yx-uEe" sceneMemberID="viewController">
+                <viewController id="1eM-yx-uEe" customClass="AlbumViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GTT-WV-zla">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33k-LO-vld">
+                                <color key="backgroundColor" red="1" green="0.45551910070000001" blue="0.69632074850000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="44"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="xo2-ib-hHh">
+                                    <size key="itemSize" width="250" height="250"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SSV-un-nsA">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLP-bX-dpu">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="180" id="6HF-5M-9ui"/>
+                                                        <constraint firstAttribute="width" constant="180" id="zd5-eI-Lk3"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Photo Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00X-bt-xhf">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="centerX" secondItem="SSV-un-nsA" secondAttribute="centerX" type="default" id="Gc5-Kx-ntw"/>
+                                            <constraint firstAttribute="bottom" secondItem="00X-bt-xhf" secondAttribute="bottom" constant="13" id="Mrc-Bm-WKu"/>
+                                            <constraint firstItem="00X-bt-xhf" firstAttribute="leading" secondItem="SSV-un-nsA" secondAttribute="leading" constant="79" id="Poc-0p-i2E"/>
+                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="top" secondItem="SSV-un-nsA" secondAttribute="top" constant="20" type="default" id="T9z-JY-r7R"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="USM-GK-bD3">
+                                <items>
+                                    <navigationItem title="Album" id="cfW-oL-ns1">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="kql-VG-RM2">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="1eM-yx-uEe" id="NUI-je-gdw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="FzY-Ac-Fae">
+                                <items>
+                                    <barButtonItem title="Add Photos" id="A5q-uE-h9l"/>
+                                    <barButtonItem title="Remove Photos" id="JOv-wQ-g0Z"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FzY-Ac-Fae" firstAttribute="leading" secondItem="GTT-WV-zla" secondAttribute="leading" type="default" id="FeP-PM-ntF"/>
+                            <constraint firstItem="FzY-Ac-Fae" firstAttribute="trailing" secondItem="GTT-WV-zla" secondAttribute="trailing" type="default" id="a0M-dL-1Sb"/>
+                            <constraint firstItem="33k-LO-vld" firstAttribute="leading" secondItem="GTT-WV-zla" secondAttribute="leading" type="default" id="a5h-OV-af1"/>
+                            <constraint firstItem="33k-LO-vld" firstAttribute="top" secondItem="USM-GK-bD3" secondAttribute="bottom" type="default" id="bMN-Ht-Vbq"/>
+                            <constraint firstItem="33k-LO-vld" firstAttribute="bottom" secondItem="FzY-Ac-Fae" secondAttribute="top" type="default" id="dYl-hH-uHJ"/>
+                            <constraint firstItem="USM-GK-bD3" firstAttribute="trailing" secondItem="GTT-WV-zla" secondAttribute="trailing" type="default" id="iCX-Dn-Hna"/>
+                            <constraint firstItem="FzY-Ac-Fae" firstAttribute="bottom" secondItem="GTT-WV-zla" secondAttribute="bottom" type="default" id="kps-Ui-pFu"/>
+                            <constraint firstItem="33k-LO-vld" firstAttribute="trailing" secondItem="GTT-WV-zla" secondAttribute="trailing" type="default" id="mBv-gw-dn4"/>
+                            <constraint firstItem="USM-GK-bD3" firstAttribute="top" secondItem="GTT-WV-zla" secondAttribute="top" type="default" id="nkw-Y2-Chk"/>
+                            <constraint firstItem="USM-GK-bD3" firstAttribute="leading" secondItem="GTT-WV-zla" secondAttribute="leading" type="default" id="oRh-Oz-PZI"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="WGV-v4-JRS"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="albumBar" destination="USM-GK-bD3" id="44M-0l-YAf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl1-Cb-Rvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2638" y="-1713"/>
+            <point key="canvasLocation" x="2867" y="-2490"/>
         </scene>
-        <!--Add Album View Controller-->
+        <!--Add Album View Controller - New Album-->
         <scene sceneID="lQO-i3-Hsw">
             <objects>
-                <viewController modalPresentationStyle="pageSheet" id="sZu-p3-JV4" customClass="AddAlbumViewController" sceneMemberID="viewController">
+                <viewController title="New Album" modalPresentationStyle="formSheet" id="sZu-p3-JV4" customClass="AddAlbumViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIT-W0-f33">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="YgE-yr-cEv">
+                                <items>
+                                    <navigationItem title="New Album" id="h03-Vl-ye7"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name of New Album:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2p-k2-gPO">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xt3-OK-5dR">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="8x9-0L-twg"/>
+                                    <constraint firstAttribute="height" constant="30" id="y2P-tF-v8X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPM-8W-bHH">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAlbum:" destination="sZu-p3-JV4" eventType="touchUpInside" id="qD5-LY-vIs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rl0-rR-yJt">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelCreateAlbum:" destination="sZu-p3-JV4" eventType="touchUpInside" id="JMr-Vg-VbY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rl0-rR-yJt" firstAttribute="top" secondItem="eIT-W0-f33" secondAttribute="top" constant="299" id="8PP-Fm-MyW"/>
+                            <constraint firstItem="zPM-8W-bHH" firstAttribute="trailing" secondItem="xt3-OK-5dR" secondAttribute="trailing" type="default" id="AxS-dE-f39"/>
+                            <constraint firstItem="t2p-k2-gPO" firstAttribute="baseline" secondItem="xt3-OK-5dR" secondAttribute="baseline" type="default" id="LLJ-GF-GGN"/>
+                            <constraint firstItem="Rl0-rR-yJt" firstAttribute="leading" secondItem="eIT-W0-f33" secondAttribute="leading" constant="142" id="Nlh-Cd-Jct"/>
+                            <constraint firstItem="t2p-k2-gPO" firstAttribute="top" secondItem="eIT-W0-f33" secondAttribute="top" constant="101" id="RJh-Ce-SMD"/>
+                            <constraint firstItem="xt3-OK-5dR" firstAttribute="leading" secondItem="t2p-k2-gPO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="VJD-Ed-7Qj"/>
+                            <constraint firstItem="xt3-OK-5dR" firstAttribute="top" secondItem="eIT-W0-f33" secondAttribute="top" constant="97" id="fco-1X-rKv"/>
+                            <constraint firstItem="YgE-yr-cEv" firstAttribute="trailing" secondItem="eIT-W0-f33" secondAttribute="trailing" type="default" id="fwc-Lj-Th9"/>
+                            <constraint firstItem="YgE-yr-cEv" firstAttribute="top" secondItem="eIT-W0-f33" secondAttribute="top" type="default" id="qNj-7c-xgO"/>
+                            <constraint firstItem="t2p-k2-gPO" firstAttribute="leading" secondItem="eIT-W0-f33" secondAttribute="leading" constant="55" id="rE3-5m-RqJ"/>
+                            <constraint firstItem="YgE-yr-cEv" firstAttribute="leading" secondItem="eIT-W0-f33" secondAttribute="leading" type="default" id="vQl-l4-lKa"/>
+                            <constraint firstItem="Rl0-rR-yJt" firstAttribute="baseline" secondItem="zPM-8W-bHH" secondAttribute="baseline" type="default" id="yDC-8N-6MZ"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="albumNameTextField" destination="xt3-OK-5dR" id="yed-T1-1HL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SO2-2P-DXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="-162"/>
+            <point key="canvasLocation" x="2975" y="-1288"/>
         </scene>
     </scenes>
     <resources>
@@ -164,12 +315,35 @@
     <classes>
         <class className="AddAlbumViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelCreateAlbum:" candidateClass="UIButton"/>
+                <relationship kind="action" name="createAlbum:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="albumNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AlbumViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="albumBar" candidateClass="UINavigationBar"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="PAAlbumCoverCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PAAlbumCoverCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albumTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coverPhoto" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="PAViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PAViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tempHelp:"/>
+                <relationship kind="outlet" name="albumCollectionView" candidateClass="UICollectionView"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -179,9 +353,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
