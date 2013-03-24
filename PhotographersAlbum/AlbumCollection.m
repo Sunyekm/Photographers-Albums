@@ -28,7 +28,7 @@
 
 }
 
--(NSInteger) count
+-(NSInteger) countAlbums
 {
     return [self.albums count];
 }

@@ -20,9 +20,17 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *albumCollectionView;
 @property (strong, nonatomic) AlbumCollection *albums;
+@property (strong, nonatomic) NSMutableArray *selectedAlbums;
+@property (nonatomic) BOOL isEditable;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addNewAlbumButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *helpButton;
+
+
 
 - (IBAction)tempHelp:(id)sender;
--(void) reloadUI;
+- (IBAction)removeAlbumButtonTapped:(UIBarButtonItem *)sender;
+- (void) reloadUI;
 
 
 

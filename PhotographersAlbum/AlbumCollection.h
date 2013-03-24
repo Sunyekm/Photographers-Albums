@@ -15,7 +15,7 @@
 
 -(void) createAlbum: (NSString *) title;
 -(void) removeAlbum: (Album *) album;
--(NSInteger) count;
+-(NSInteger) countAlbums;
 
 
 

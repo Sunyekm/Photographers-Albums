@@ -48,16 +48,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon144.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-7K-QDw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FolderIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-7K-QDw">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="180" id="Yxk-sz-QNJ"/>
                                                         <constraint firstAttribute="height" constant="180" id="eAB-yd-8WZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM3-tS-7JS">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="92" id="Yvg-qu-S0Z"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -66,15 +63,15 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="centerX" secondItem="Q8O-7K-QDw" secondAttribute="centerX" type="default" id="PMf-su-SJZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="DM3-tS-7JS" secondAttribute="trailing" constant="20" type="default" id="Njf-5P-C9j"/>
+                                            <constraint firstItem="Q8O-7K-QDw" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" constant="20" type="default" id="RuG-9s-GzX"/>
+                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="leading" secondItem="KFP-5B-sdM" secondAttribute="leading" constant="20" type="default" id="Rxm-2d-hOO"/>
                                             <constraint firstAttribute="bottom" secondItem="DM3-tS-7JS" secondAttribute="bottom" constant="13" id="TZe-ob-oGS"/>
-                                            <constraint firstItem="Q8O-7K-QDw" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" constant="20" type="default" id="Vr7-8u-lJa"/>
-                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="centerX" secondItem="KFP-5B-sdM" secondAttribute="centerX" type="default" id="wK9-FP-Tw7"/>
+                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="centerX" secondItem="Q8O-7K-QDw" secondAttribute="centerX" type="default" id="pxG-pn-cly"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="albumTitleLabel" destination="DM3-tS-7JS" id="RxZ-1O-2jB"/>
                                             <outlet property="coverPhoto" destination="Q8O-7K-QDw" id="IF6-Io-vt5"/>
-                                            <segue destination="1eM-yx-uEe" kind="push" identifier="PushAlbumView" id="et0-Uo-UBt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -95,11 +92,16 @@
                                             <segue destination="sZu-p3-JV4" kind="modal" identifier="CreateNewAlbum" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="Jdl-Lj-cwT"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Remove Album" id="ETV-wV-xUc"/>
+                                    <barButtonItem title="Remove Album" id="ETV-wV-xUc">
+                                        <connections>
+                                            <action selector="removeAlbumButtonTapped:" destination="hZs-6o-1HF" id="5M7-Z5-EPd"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Settings" id="Taf-Fx-GKw"/>
                                     <barButtonItem title="Help" id="DUN-9q-UMn">
                                         <connections>
                                             <action selector="tempHelp:" destination="hZs-6o-1HF" id="FJa-Wn-Kc3"/>
+                                            <segue destination="Dg8-4w-rG8" kind="modal" id="7oI-ae-wgD"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -110,11 +112,11 @@
                             <constraint firstItem="pcD-gT-WKg" firstAttribute="trailing" secondItem="YBn-su-Uga" secondAttribute="trailing" type="default" id="4a8-eJ-1sP"/>
                             <constraint firstItem="08B-Ct-wqj" firstAttribute="trailing" secondItem="YBn-su-Uga" secondAttribute="trailing" type="default" id="4g4-L3-MNG"/>
                             <constraint firstItem="lSV-JE-2SI" firstAttribute="trailing" secondItem="YBn-su-Uga" secondAttribute="trailing" type="default" id="5aJ-0C-RQ5"/>
+                            <constraint firstItem="lSV-JE-2SI" firstAttribute="bottom" secondItem="YBn-su-Uga" secondAttribute="bottom" type="default" id="B7v-me-KYQ"/>
                             <constraint firstItem="lSV-JE-2SI" firstAttribute="leading" secondItem="YBn-su-Uga" secondAttribute="leading" type="default" id="CM5-RX-JVQ"/>
-                            <constraint firstItem="pcD-gT-WKg" firstAttribute="top" secondItem="YBn-su-Uga" secondAttribute="top" type="default" id="Qih-vN-wh8"/>
-                            <constraint firstItem="08B-Ct-wqj" firstAttribute="bottom" secondItem="lSV-JE-2SI" secondAttribute="top" type="default" id="Wn8-9u-yEh"/>
-                            <constraint firstItem="lSV-JE-2SI" firstAttribute="bottom" secondItem="YBn-su-Uga" secondAttribute="bottom" type="default" id="ZWK-iC-Jx4"/>
-                            <constraint firstItem="08B-Ct-wqj" firstAttribute="top" secondItem="pcD-gT-WKg" secondAttribute="bottom" type="default" id="Zpe-s8-Nl1"/>
+                            <constraint firstItem="08B-Ct-wqj" firstAttribute="bottom" secondItem="lSV-JE-2SI" secondAttribute="top" type="default" id="HXT-bg-Qj3"/>
+                            <constraint firstItem="pcD-gT-WKg" firstAttribute="top" secondItem="YBn-su-Uga" secondAttribute="top" type="default" id="Igg-3e-yzH"/>
+                            <constraint firstItem="08B-Ct-wqj" firstAttribute="top" secondItem="pcD-gT-WKg" secondAttribute="bottom" type="default" id="qoB-CG-jec"/>
                             <constraint firstItem="pcD-gT-WKg" firstAttribute="leading" secondItem="YBn-su-Uga" secondAttribute="leading" type="default" id="xKg-Jb-iQU"/>
                             <constraint firstItem="08B-Ct-wqj" firstAttribute="leading" secondItem="YBn-su-Uga" secondAttribute="leading" type="default" id="ynz-jK-JiG"/>
                         </constraints>
@@ -125,8 +127,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="AlbumCollectionView" destination="08B-Ct-wqj" id="Gjw-cE-517"/>
+                        <outlet property="addNewAlbumButton" destination="MKQ-ee-YXD" id="k46-hX-Ttd"/>
                         <outlet property="albumCollectionView" destination="08B-Ct-wqj" id="YSt-rD-7Us"/>
+                        <outlet property="helpButton" destination="DUN-9q-UMn" id="QKc-aR-Mh3"/>
+                        <outlet property="settingButton" destination="Taf-Fx-GKw" id="gC8-Rk-CiE"/>
+                        <segue destination="1eM-yx-uEe" kind="push" identifier="PushAlbumView" id="7m5-X4-4YZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXH-OZ-dEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +148,6 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33k-LO-vld">
                                 <color key="backgroundColor" red="1" green="0.45551910070000001" blue="0.69632074850000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="44"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="xo2-ib-hHh">
                                     <size key="itemSize" width="250" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -151,7 +155,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SSV-un-nsA">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="SSV-un-nsA" customClass="PAPhotoCell">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -160,26 +164,26 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLP-bX-dpu">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="180" id="6HF-5M-9ui"/>
-                                                        <constraint firstAttribute="width" constant="180" id="zd5-eI-Lk3"/>
+                                                        <constraint firstAttribute="width" constant="235" id="30t-Ax-Wm4"/>
+                                                        <constraint firstAttribute="height" constant="235" id="Pqk-ag-I3Q"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Photo Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00X-bt-xhf">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="centerX" secondItem="SSV-un-nsA" secondAttribute="centerX" type="default" id="Gc5-Kx-ntw"/>
-                                            <constraint firstAttribute="bottom" secondItem="00X-bt-xhf" secondAttribute="bottom" constant="13" id="Mrc-Bm-WKu"/>
-                                            <constraint firstItem="00X-bt-xhf" firstAttribute="leading" secondItem="SSV-un-nsA" secondAttribute="leading" constant="79" id="Poc-0p-i2E"/>
-                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="top" secondItem="SSV-un-nsA" secondAttribute="top" constant="20" type="default" id="T9z-JY-r7R"/>
+                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="top" secondItem="SSV-un-nsA" secondAttribute="top" constant="7" id="DOw-IB-NBa"/>
+                                            <constraint firstItem="DLP-bX-dpu" firstAttribute="centerX" secondItem="SSV-un-nsA" secondAttribute="centerX" type="default" id="cUq-DR-Ss4"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="photoThumbnail" destination="DLP-bX-dpu" id="y2o-Ua-jvg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="1eM-yx-uEe" id="EOa-zA-XwZ"/>
+                                    <outlet property="delegate" destination="1eM-yx-uEe" id="0Vp-wd-uTm"/>
+                                </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="USM-GK-bD3">
                                 <items>
@@ -194,7 +198,21 @@
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="FzY-Ac-Fae">
                                 <items>
-                                    <barButtonItem title="Add Photos" id="A5q-uE-h9l"/>
+                                    <barButtonItem title="Add Photos" id="A5q-uE-h9l">
+                                        <connections>
+                                            <action selector="AddPhotosButtonTapped:" destination="1eM-yx-uEe" id="pdc-Q4-MNI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Add Internet Photo" id="dN5-s3-37V">
+                                        <connections>
+                                            <segue destination="h3f-K7-8MV" kind="modal" identifier="SelectPhotoSource" id="VHw-uh-7Rp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Rename Album" id="QIs-z7-S5u">
+                                        <connections>
+                                            <action selector="renameButtonTapped:" destination="1eM-yx-uEe" id="Tpe-Ed-rJM"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Remove Photos" id="JOv-wQ-g0Z"/>
                                 </items>
                             </toolbar>
@@ -219,16 +237,137 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="albumBar" destination="USM-GK-bD3" id="44M-0l-YAf"/>
+                        <outlet property="photoCollectionView" destination="33k-LO-vld" id="oj7-zb-6dA"/>
+                        <segue destination="Gbe-ly-RPI" kind="modal" identifier="SelectPhotos" id="JV0-ti-yro"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl1-Cb-Rvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2867" y="-2490"/>
+            <point key="canvasLocation" x="2876" y="-2498"/>
+        </scene>
+        <!--Select Photo View Controller-->
+        <scene sceneID="1wK-Wf-T3S">
+            <objects>
+                <viewController id="Gbe-ly-RPI" customClass="SelectPhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Bu-Df-F15">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="0.45551910070000001" blue="0.69632074850000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2aF-HT-mWK"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27H-z0-DNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4132" y="-2318"/>
+        </scene>
+        <!--Select Photo Source View Controller-->
+        <scene sceneID="WCj-wm-CpE">
+            <objects>
+                <viewController modalPresentationStyle="formSheet" id="h3f-K7-8MV" customClass="SelectPhotoSourceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aUU-6u-iZK">
+                        <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlm-HF-brl">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="Vsf-Rq-QlV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add from Photo Album">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromLocalTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="STd-tF-98c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-P8-5LN">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add from Flickr">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromFlickrTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="UIf-rU-qn8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQa-Ke-TxE">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add from Windows File Sharing">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromWindowsTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="VgJ-Z1-q3I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-3j-rHs">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add from Facebook">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromFacebookTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="rc8-e3-f57"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08E-1Y-2aE">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="okU-fA-RCN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SQa-Ke-TxE" firstAttribute="top" secondItem="bbr-P8-5LN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="24A-xs-olw"/>
+                            <constraint firstItem="SQa-Ke-TxE" firstAttribute="trailing" secondItem="bbr-P8-5LN" secondAttribute="trailing" type="default" id="7Cr-Fk-p2l"/>
+                            <constraint firstItem="5vM-3j-rHs" firstAttribute="leading" secondItem="SQa-Ke-TxE" secondAttribute="leading" type="default" id="8go-7d-8ia"/>
+                            <constraint firstItem="bbr-P8-5LN" firstAttribute="top" secondItem="Xlm-HF-brl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="B8b-eO-SOW"/>
+                            <constraint firstItem="SQa-Ke-TxE" firstAttribute="leading" secondItem="bbr-P8-5LN" secondAttribute="leading" type="default" id="BwA-od-JWl"/>
+                            <constraint firstAttribute="bottom" secondItem="08E-1Y-2aE" secondAttribute="bottom" constant="53" id="EgW-HG-2nB"/>
+                            <constraint firstItem="Xlm-HF-brl" firstAttribute="top" secondItem="aUU-6u-iZK" secondAttribute="top" constant="57" id="Ez6-JQ-36J"/>
+                            <constraint firstItem="5vM-3j-rHs" firstAttribute="top" secondItem="SQa-Ke-TxE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IO5-Tg-GsD"/>
+                            <constraint firstItem="08E-1Y-2aE" firstAttribute="trailing" secondItem="5vM-3j-rHs" secondAttribute="trailing" type="default" id="NcC-1R-pyP"/>
+                            <constraint firstItem="08E-1Y-2aE" firstAttribute="centerX" secondItem="aUU-6u-iZK" secondAttribute="centerX" type="default" id="R0l-rR-yYU"/>
+                            <constraint firstItem="bbr-P8-5LN" firstAttribute="leading" secondItem="Xlm-HF-brl" secondAttribute="leading" type="default" id="V7c-LP-IAR"/>
+                            <constraint firstItem="Xlm-HF-brl" firstAttribute="trailing" secondItem="bbr-P8-5LN" secondAttribute="trailing" type="default" id="s3I-qH-4xO"/>
+                            <constraint firstItem="5vM-3j-rHs" firstAttribute="trailing" secondItem="SQa-Ke-TxE" secondAttribute="trailing" type="default" id="tue-Rn-2Am"/>
+                            <constraint firstItem="08E-1Y-2aE" firstAttribute="leading" secondItem="5vM-3j-rHs" secondAttribute="leading" type="default" id="ycK-FA-x5a"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xr4-WF-Cmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4120" y="-3203"/>
         </scene>
         <!--Add Album View Controller - New Album-->
         <scene sceneID="lQO-i3-Hsw">
             <objects>
-                <viewController title="New Album" modalPresentationStyle="formSheet" id="sZu-p3-JV4" customClass="AddAlbumViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" title="New Album" modalPresentationStyle="formSheet" id="sZu-p3-JV4" customClass="AddAlbumViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIT-W0-f33">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -295,7 +434,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -306,11 +445,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SO2-2P-DXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2975" y="-1288"/>
+            <point key="canvasLocation" x="2883" y="-1436"/>
+        </scene>
+        <!--Help View Controller - Help-->
+        <scene sceneID="qn9-wS-B0e">
+            <objects>
+                <viewController title="Help" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" id="Dg8-4w-rG8" customClass="HelpViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Vg-LY-27D">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cg4-aK-rQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2876" y="-476"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Icon144.png" width="144" height="144"/>
+        <image name="FolderIcon.png" width="512" height="512"/>
     </resources>
     <classes>
         <class className="AddAlbumViewController" superclassName="UIViewController">
@@ -324,9 +478,15 @@
         <class className="AlbumViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
             <relationships>
+                <relationship kind="action" name="AddPhotosButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="renameButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="albumBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="photoCollectionView" candidateClass="UICollectionView"/>
             </relationships>
+        </class>
+        <class className="HelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -338,12 +498,35 @@
                 <relationship kind="outlet" name="coverPhoto" candidateClass="UIImageView"/>
             </relationships>
         </class>
+        <class className="PAPhotoCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PAPhotoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="photoThumbnail" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="PAViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PAViewController.h"/>
             <relationships>
+                <relationship kind="action" name="removeAlbumButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="tempHelp:"/>
+                <relationship kind="outlet" name="addNewAlbumButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="albumCollectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="helpButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="settingButton" candidateClass="UIBarButtonItem"/>
             </relationships>
+        </class>
+        <class className="SelectPhotoSourceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectPhotoSourceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addFromFacebookTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addFromFlickrTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addFromLocalTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addFromWindowsTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="cancelButtonTapped:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SelectPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectPhotoViewController.h"/>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -353,6 +536,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

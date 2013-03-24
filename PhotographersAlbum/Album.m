@@ -12,6 +12,10 @@
 
 -(void) addPhoto : (Photo *) photo
 {
+    if (!_photos)
+    {
+        _photos = [[NSMutableArray alloc] init];
+    }
     [self.photos addObject:photo];
 }
 
@@ -28,12 +32,15 @@
 
 -(void) removePhoto: (Photo *) photo
 {
+    
     [self.photos removeObject:photo];
 }
 
 
-/*
- -(NSMutableArray *) photos;
+
+
+ /*
+  -(NSMutableArray *) photos;
 {
     if (!_photos)
     {
@@ -43,10 +50,11 @@
     return _photos;
 }
  */
+ 
 
 -(Photo *)coverPhoto;
 {
-    if (!_coverPhoto)
+    if (!_coverPhoto && [self.photos count] >0)
     {
         _coverPhoto = [self.photos objectAtIndex:0];
     }

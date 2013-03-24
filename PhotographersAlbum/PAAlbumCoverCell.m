@@ -10,11 +10,17 @@
 
 @implementation PAAlbumCoverCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Initialization code
+        UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
+        
+        
+        bgView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.7];
+        //bgView.layer.borderColor = [[UIColor whiteColor] CGColor];
+        //bgView.layer.borderWidth = 4;
+        self.selectedBackgroundView = bgView;
     }
     return self;
 }
