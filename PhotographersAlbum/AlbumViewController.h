@@ -12,6 +12,7 @@
 
 @optional
 -(void) albumViewFinished : (AlbumViewController *) albumVC;
+-(void) writeAlbumsToDatabase;
 
 @end
 
@@ -22,30 +23,38 @@
 #import "PAPhotoCell.h"
 #import "SelectPhotoSourceViewController.h"
 #import "SelectPhotoViewController.h"
+#import "ImageViewController.h"
 
-
-enum PhotoSourceType
+enum photoSourceType
 {
-    photoLibrary,
-    flickr,
-    facebook,
-    windows,
-    
+    Flickr=1,
+    Facebook=2,
+    Windows=3,
 };
 
-@interface AlbumViewController  : UIViewController <SelectPhotoSourceDelegate, SelectPhotoDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
+
+@interface AlbumViewController  : UIViewController <SelectPhotoSourceDelegate, SelectPhotoDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,ImageViewDelegate>
 
 
 @property (strong, nonatomic) Album *album;
 @property (weak, nonatomic) id <AlbumViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addPhotoButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addInternetPhotoButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *renameButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *removePhotoButton;
+
 @property (weak, nonatomic) IBOutlet UINavigationBar *albumBar;
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 @property (nonatomic) BOOL isEditable;
-@property (nonatomic) enum PhotoSourceType photoSource;
+@property (nonatomic) enum photoSourceType photoSource;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
-@property (strong, nonatomic) NSMutableArray *selectedPhotos; //Photo
+@property (strong, nonatomic) NSMutableArray *selectedPhotos; //Photo from photo source to add
+
+@property (strong, nonatomic) NSMutableArray *selectedPhotosToRemove;
 @property (strong, nonatomic) UIPopoverController *selectPhotoPopoverController;
 
+
+- (IBAction)removePhotoButtonTapped:(UIBarButtonItem *)sender;
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction)renameButtonTapped:(UIBarButtonItem *)sender;

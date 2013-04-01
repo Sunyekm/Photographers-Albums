@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>2</key>
+	<dict>
+		<key>PHOTOS</key>
+		<dict>
+			<key>0</key>
+			<dict/>
+		</dict>
+		<key>ALBUM_TITLE</key>
+		<string></string>
+		<key>COVER_PHOTO</key>
+		<integer>0</integer>
+	</dict>
+	<key>1</key>
+	<dict>
+		<key>PHOTOS</key>
+		<dict>
+			<key>0</key>
+			<dict/>
+		</dict>
+		<key>ALBUM_TITLE</key>
+		<string></string>
+		<key>COVER_PHOTO</key>
+		<integer>0</integer>
+	</dict>
+	<key>0</key>
+	<dict>
+		<key>PHOTOS</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>PHOTO_TITLE</key>
+				<string></string>
+				<key>PHOTO_URL</key>
+				<string></string>
+			</dict>
+		</dict>
+		<key>ALBUM_TITLE</key>
+		<string>Example Album</string>
+		<key>COVER_PHOTO</key>
+		<integer>0</integer>
+	</dict>
+</dict>
+</plist>

@@ -7,6 +7,8 @@
 //
 
 #import "SelectPhotoSourceViewController.h"
+#import "AlbumViewController.h"
+
 
 @interface SelectPhotoSourceViewController ()
 
@@ -29,40 +31,41 @@
 	// Do any additional setup after loading the view.
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addFromLocalTapped:(UIButton *)sender
-{
-    self.photoSource = photoLibrary;
-    [self.delegate photoSourceSelected];
-}
+
 
 - (IBAction)addFromFlickrTapped:(UIButton *)sender
 {
-    self.photoSource = flickr;
-    [self.delegate photoSourceSelected];
+    self.photoSource = Flickr;
+    [self.delegate photoSourceSelected: self];
+    
+    
+    
 }
 
 - (IBAction)addFromWindowsTapped:(UIButton *)sender
 {
-    self.photoSource = windows;
-    [self.delegate photoSourceSelected];
+    self.photoSource =  Windows;
+    [self.delegate photoSourceSelected: self];
+    
 }
 
 - (IBAction)addFromFacebookTapped:(UIButton *)sender
 {
-    self.photoSource = facebook;
-    [self.delegate photoSourceSelected];
+    self.photoSource = Facebook;
+    [self.delegate photoSourceSelected: self];
 }
 
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender
 {
     
-    [self.delegate photoSourceSelected];
+    [self.delegate photoSourceSelectCancelled];
 }
 @end

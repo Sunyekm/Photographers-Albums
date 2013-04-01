@@ -9,18 +9,30 @@
 
 @protocol SelectPhotoDelegate <NSObject>
 
-- (void) photosSelected;
+- (void) photosSelected : (SelectPhotoViewController *) sender;
 - (void) cancelled;
 
 @end
+
 #import <UIKit/UIKit.h>
 #import "AlbumViewController.h"
 #import "Album.h"
+#import "FlickrCell.h"
+#import "FlickrFetcher.h"
 
 @interface SelectPhotoViewController : UIViewController
 
-@property (nonatomic) enum PhotoSourceType photoSource;
-@property (strong, nonatomic) Album *album;
+@property (nonatomic) enum photoSourceType photoSource;
+@property (strong, nonatomic) NSArray *flickrPhotos; // of NSDictionary
+@property (strong, nonatomic) NSMutableArray *photos; // of Photo
+@property (strong, nonatomic) NSMutableArray *selectedPhotos; // of Photo
 @property (strong, nonatomic) id <SelectPhotoDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UICollectionView *flickrCV;
+@property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
+
+
+
+- (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender;
+- (IBAction)doneButtonTapped:(UIBarButtonItem *)sender;
 
 @end

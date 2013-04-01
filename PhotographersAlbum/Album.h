@@ -12,7 +12,7 @@
 @interface Album : NSObject
 
 @property (strong, nonatomic) NSMutableArray *photos; //Photo
-@property (strong, nonatomic) NSDate *dateCreated;
+//@property (strong, nonatomic) NSDate *dateCreated;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) Photo *coverPhoto;
 

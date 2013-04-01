@@ -11,11 +11,15 @@
 @interface Photo : NSObject
 
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (strong, nonatomic) UIImage *largeImage;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *authorName;
-@property (strong, nonatomic) NSURL *imageUrl;
+//@property (strong, nonatomic) NSString *authorName;
+@property (strong, nonatomic) NSString *imageUrl;
+@property (strong, nonatomic) NSString *imageThumbnailUrl;
+@property (nonatomic) BOOL isLocalFile;
 
 
+
+- (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize;
 
 @end

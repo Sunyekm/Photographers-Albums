@@ -23,6 +23,7 @@
 typedef enum {
 	FlickrPhotoFormatSquare = 1,
 	FlickrPhotoFormatLarge = 2,
+    FlickrPhotoFormatThumbnail = 3,
 	FlickrPhotoFormatOriginal = 64
 } FlickrPhotoFormat;
 
@@ -31,7 +32,7 @@ typedef enum {
 + (NSArray *)stanfordPhotos;
 
 + (NSURL *)urlForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format;
-
++ (NSString *)urlStringForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format;
 + (NSArray *)latestGeoreferencedPhotos;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  PAPhotoCell.m
+//  FlickrCell.m
 //  PhotographersAlbum
 //
-//  Created by Ye Sun on 2013-03-22.
+//  Created by Ye Sun on 2013-03-25.
 //  Copyright (c) 2013 bcit. All rights reserved.
 //
 
-#import "PAPhotoCell.h"
+#import "FlickrCell.h"
 
-@implementation PAPhotoCell
+@implementation FlickrCell
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -23,6 +23,7 @@
     }
     return self;
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

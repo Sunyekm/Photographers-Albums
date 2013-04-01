@@ -9,7 +9,8 @@
 
 @protocol SelectPhotoSourceDelegate <NSObject>
 
--(void) photoSourceSelected;
+-(void) photoSourceSelected: (SelectPhotoSourceViewController *)sender;
+-(void) photoSourceSelectCancelled;
 
 @end
 
@@ -18,11 +19,11 @@
 
 @interface SelectPhotoSourceViewController : UIViewController
 
-@property (nonatomic) enum PhotoSourceType photoSource;
+@property (nonatomic) enum photoSourceType photoSource;
+
 @property (strong, nonatomic) id <SelectPhotoSourceDelegate> delegate;
 
 
-- (IBAction)addFromLocalTapped:(UIButton *)sender;
 - (IBAction)addFromFlickrTapped:(UIButton *)sender;
 - (IBAction)addFromWindowsTapped:(UIButton *)sender;
 - (IBAction)addFromFacebookTapped:(UIButton *)sender;

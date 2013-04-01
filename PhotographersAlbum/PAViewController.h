@@ -15,7 +15,7 @@
 
 
 
-@interface PAViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AddAlbumViewDelegate, AlbumViewControllerDelegate>
+@interface PAViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AddAlbumViewDelegate, AlbumViewControllerDelegate, UIAlertViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionView *albumCollectionView;
@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addNewAlbumButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *helpButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *removeAlbumButton;
+
+@property (strong, nonatomic) NSMutableDictionary *albumDatabase;
+@property (strong, nonatomic) NSString *databasePath;
 
 
 
@@ -32,7 +36,9 @@
 - (IBAction)removeAlbumButtonTapped:(UIBarButtonItem *)sender;
 - (void) reloadUI;
 
-
-
+- (void) loadDatabase;
+- (void) writeDatabase;
+- (void) loadObjectFromDatabase;
+- (void) saveObjecttoDatabase;
 
 @end

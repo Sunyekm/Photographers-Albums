@@ -32,6 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.albumNameTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,7 +41,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)createAlbum:(UIButton *)sender
+
+
+
+
+- (IBAction)createButtonTapped:(UIButton *)sender
+{
+    [self createAlbum];
+    [self.delegate AddAlbumViewControllerFinished];
+}
+
+- (IBAction)cancelCreateAlbum:(UIButton *)sender
+{
+    
+    
+    [self.delegate AddAlbumViewControllerFinished];
+    
+}
+
+#pragma mark - UITextFieldDelegate methods
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    
+    [self createAlbum];
+    
+    
+    [textField resignFirstResponder];
+    [self.delegate AddAlbumViewControllerFinished];
+    
+    return YES;
+}
+
+-(void) createAlbum
 {
     if (![self.albumNameTextField.text isEqualToString:@""])
     {
@@ -53,17 +84,8 @@
     }
     
     
-    [self.delegate AddAlbumViewControllerFinished];
     
     
-    
-}
 
-- (IBAction)cancelCreateAlbum:(UIButton *)sender
-{
-    
-    
-    [self.delegate AddAlbumViewControllerFinished];
-    
 }
 @end

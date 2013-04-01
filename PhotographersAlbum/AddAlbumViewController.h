@@ -22,14 +22,16 @@
 
 
 
-@interface AddAlbumViewController : UIViewController
+@interface AddAlbumViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *albumNameTextField;
 @property (strong, nonatomic) AlbumCollection *albums;
 @property (nonatomic, weak) id <AddAlbumViewDelegate> delegate;
 
 
-- (IBAction)createAlbum:(UIButton *)sender;
+
+- (IBAction)createButtonTapped:(UIButton *)sender;
+
 - (IBAction)cancelCreateAlbum:(UIButton *)sender;
 
 

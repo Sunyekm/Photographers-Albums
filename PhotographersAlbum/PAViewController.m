@@ -34,6 +34,8 @@
     
     self.albumCollectionView.backgroundColor = [UIColor blackColor];
     
+    [self loadDatabase];
+    
     [self reloadUI];
 }
 
@@ -49,6 +51,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString *) databasePath
+{
+    if (!_databasePath)
+    {
+        
+        _databasePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"AlbumDatabase.plist"];
+    }
+    return  _databasePath;
+}
+
 - (NSMutableArray *) selectedAlbums
 {
     if (!_selectedAlbums)
@@ -59,8 +71,160 @@
 }
 
 
+//Data persistence -------------------------- TO BE TESTED //////////////////////
+- (void) loadObjectFromDatabase
+{
+    int numberOfAlbums = [self.albumDatabase count];
+    for (int i=0; i<numberOfAlbums; i++) {
+        NSMutableDictionary *album = [self.albumDatabase objectForKey:[NSString stringWithFormat:@"%d",i]];
+        
+        NSString *albumTitle = [album objectForKey:@"ALBUM_TITLE"];
+        int indexOfCoverPhoto = (int) [album objectForKey:@"COVER_PHOTO"];
+        
+        NSMutableDictionary *photos = [album objectForKey:@"PHOTOS"];
+        
+        
+        [self.albums createAlbum:albumTitle];
+        
+        
+        
+        
+        
+        int numberOfPhotos = [photos count];
+        
+        
+        
+        for (int j=0; j<numberOfPhotos; j++)
+        {
+            Album *album = [self.albums.albums objectAtIndex:i];
+            
+            Photo *photo = [[Photo alloc] init];
+            
+            NSMutableDictionary *photoDatabase = [photos objectForKey:[NSString stringWithFormat:@"%d",j]];
+            
+            photo.imageUrl = [photoDatabase objectForKey:@"PHOTO_URL"];
+            photo.title = [photoDatabase objectForKey:@"PHOTO_TITLE"];
+            photo.imageThumbnailUrl = [photoDatabase objectForKey:@"THUMBNAIL_URL"];
+            if ([[photoDatabase objectForKey:@"IS_LOCAL_FILE"] isEqualToString:@"YES"])
+            {
+                photo.isLocalFile = YES;
+            }
+            else
+            {
+                photo.isLocalFile = NO;
+            }
+            [album addPhoto:photo];
+            
+            if (j == indexOfCoverPhoto) album.coverPhoto = photo;
+        }
+    }
+}
+
+- (void) saveObjecttoDatabase
+{
+    if (!self.albumDatabase)
+    {
+        self.albumDatabase = [[NSMutableDictionary alloc] init];
+    }
+    
+    int numberOfAlbums = [self.albums countAlbums];
+    
+    
+    
+    for (int i=0; i<numberOfAlbums; i++)
+    {
+        Album *album = [self.albums.albums objectAtIndex:i];
+        
+        NSMutableDictionary *albumInDatabase = [[NSMutableDictionary alloc] init];
+        
+        
+        [albumInDatabase setObject:album.title forKey:@"ALBUM_TITLE"];
+        
+        
+        
+        
+        [self.albumDatabase setObject:albumInDatabase forKey:[NSString stringWithFormat:@"%d",i]];
+        
+        
+        
+        NSMutableDictionary *photosInDatabase = [[NSMutableDictionary alloc] init];
+        [albumInDatabase setObject:photosInDatabase forKey:@"PHOTOS"];
+        
+        int indexOfCoverPhoto = [album.photos indexOfObject:album.coverPhoto];
+        [albumInDatabase setObject:[NSString stringWithFormat:@"%d",indexOfCoverPhoto] forKey:@"COVER_PHOTO"];
+        
+        
+        int numberOfPhots = [album.photos count];
+        for (int j=0; j<numberOfPhots; j++)
+        {
+            Photo *photo = [album.photos objectAtIndex:j];
+            
+            
+            
+            NSMutableDictionary *photoInDatabase = [[NSMutableDictionary alloc] init];
+            
+            [photoInDatabase setObject:photo.title forKey:@"PHOTO_TITLE"];
+            [photoInDatabase setObject:photo.imageUrl forKey:@"PHOTO_URL"];
+            [photoInDatabase setObject:photo.imageThumbnailUrl forKey:@"THUMBNAIL_URL"];
+            
+            if (photo.isLocalFile)
+            {
+                [photoInDatabase setObject:@"YES" forKey:@"IS_LOCAL_FILE"];
+            }
+            else
+            {
+                [photoInDatabase setObject:@"NO" forKey:@"IS_LOCAL_FILE"];
+            }
+            
+            [photosInDatabase setObject:photoInDatabase forKey:[NSString stringWithFormat:@"%d",j]];
+            
+            
+            
+        }
+        
+    }
+}
+
+- (void) loadDatabase
+{
+    
+    BOOL success = [[NSFileManager defaultManager] fileExistsAtPath:self.databasePath];
+    
+    
+    if (success)
+    {
+        self.albumDatabase = [[NSMutableDictionary alloc] initWithContentsOfFile:self.databasePath];
+    }
+    else
+    {
+        self.albumDatabase = [[NSMutableDictionary alloc] init];
+    }
+    
+    [self loadObjectFromDatabase];
+    
+}
+
+- (void) writeDatabase
+{
+    if ([self.albums.albums count] > 0)
+    {
+        [self.albumDatabase removeAllObjects];
+        
+        [self saveObjecttoDatabase];
+        
+        [self.albumDatabase writeToFile:self.databasePath atomically:YES];
+        
+    }
+    
+    
+    NSLog([self.albumDatabase description]);
+    
+}
+//Data persistence -------------------------- TO BE TESTED /////////////////////////////////
 
 
+
+//Segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure your segue name in storyboard is the same as this line
@@ -102,53 +266,71 @@
 
 - (IBAction)removeAlbumButtonTapped:(UIBarButtonItem *)sender
 {
-    UIBarButtonItem *button = sender;
+    
     
     if (!self.isEditable)
     {
-        self.isEditable = YES;
+        
         self.settingButton.enabled = NO;
         self.addNewAlbumButton.enabled = NO;
         self.helpButton.enabled = NO;
-        button.title = @"Done";
+        self.removeAlbumButton.title = @"Done";
         [self.albumCollectionView setAllowsMultipleSelection:YES];
+        
+        
         
     }
     else
     {
-        self.isEditable = NO;
-        self.settingButton.enabled = YES;
-        self.addNewAlbumButton.enabled = YES;
-        self.helpButton.enabled = YES;
-        UIBarButtonItem *button = sender;
-        button.title = @"Remove Album";
         
-        for (Album *album in self.selectedAlbums)
+        if ([self.selectedAlbums count] >0)
         {
-            [self.albums.albums removeObject:album];
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Remove Albums"
+                                  message:@"Are you sure you want to remove these Albums?"
+                                  delegate:self
+                                  cancelButtonTitle:@"Remove"
+                                  otherButtonTitles:@"Cancel", nil];
+            
+            [alert show];
+        
+        }
+        else
+        {
+            [self.albumCollectionView setAllowsMultipleSelection:NO];
+            self.settingButton.enabled = YES;
+            self.addNewAlbumButton.enabled = YES;
+            self.helpButton.enabled = YES;
+            self.removeAlbumButton.title = @"Remove Album";
+            [self.selectedAlbums removeAllObjects];
+            [self reloadUI];
         }
         
-        [self.selectedAlbums removeAllObjects];
         
-        [self.albumCollectionView setAllowsMultipleSelection:NO];
         
-        [self reloadUI];
+        
+        
+        
+        
     }
+    
+    self.isEditable = !self.isEditable;
 }
 
 -(void) reloadUI
 {
     
-    [self.albumCollectionView reloadData];
-    
-    
-    
-     
     for(NSIndexPath *indexPath in self.albumCollectionView.indexPathsForSelectedItems)
     {
         
         [self.albumCollectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
+    [self.albumCollectionView reloadData];
+    
+    [self writeDatabase];
+    
+     
+    
 }
 
 #pragma mark - UICollectionView Datasource
@@ -217,5 +399,61 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     [self reloadUI];
 }
+
+#pragma mark - AlbumViewControllerDelegate
+-(void) writeAlbumsToDatabase
+{
+    [self reloadUI];
+}
+
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+{
     
+    if (buttonIndex == 0)
+        
+    {
+        for (Album *album in self.selectedAlbums)
+        {
+            [self.albums.albums removeObject:album];
+        }
+        
+        
+        
+        
+        
+                
+        
+        
+        
+    }
+    else
+    {
+        NSArray *indexes = [self.albumCollectionView indexPathsForSelectedItems];
+        
+        for (int i =0; i < [indexes count]; i++)
+        {
+            
+            [self.albumCollectionView deselectItemAtIndexPath:indexes[i] animated:YES];
+        }
+        
+        
+        
+        
+    }
+
+
+    [self.albumCollectionView setAllowsMultipleSelection:NO];
+    self.settingButton.enabled = YES;
+    self.addNewAlbumButton.enabled = YES;
+    self.helpButton.enabled = YES;
+    self.removeAlbumButton.title = @"Remove Album";
+    [self.selectedAlbums removeAllObjects];
+    [self reloadUI];
+
+}
+
+
 @end
