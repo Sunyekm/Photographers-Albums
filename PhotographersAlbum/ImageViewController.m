@@ -34,7 +34,7 @@
     int xPosition = 0;
     for (Photo* photo in self.album.photos) {
         UIImage * image = photo.image;
-        CGRect rect = CGRectMake(xPosition, 90.0f, image.size.width, image.size.height);
+        CGRect rect = CGRectMake(xPosition, 0.0f, image.size.width, image.size.height);
         
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:rect];
         [imageView setImage:photo.image];

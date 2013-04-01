@@ -240,6 +240,8 @@
 //        scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
 //        
 //        [self.view addSubview:scroll];
+        [self performSegueWithIdentifier:@"ShowAPhoto"
+                                  sender:self];
         
         
         [self.photoCollectionView deselectItemAtIndexPath:indexPath animated:YES];

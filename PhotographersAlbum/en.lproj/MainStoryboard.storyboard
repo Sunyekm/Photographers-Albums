@@ -178,7 +178,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="photoThumbnail" destination="DLP-bX-dpu" id="y2o-Ua-jvg"/>
-                                            <segue destination="hCy-1z-RIw" kind="modal" identifier="ShowAPhoto" id="vHQ-iV-Esr"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -249,11 +248,12 @@
                         <outlet property="removePhotoButton" destination="JOv-wQ-g0Z" id="2LT-f1-VHT"/>
                         <outlet property="renameButton" destination="QIs-z7-S5u" id="0lx-2b-fsV"/>
                         <segue destination="Gbe-ly-RPI" kind="modal" identifier="SelectPhotos" id="JV0-ti-yro"/>
+                        <segue destination="hCy-1z-RIw" kind="modal" identifier="ShowAPhoto" id="UtB-Rc-U2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl1-Cb-Rvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2868" y="-2498"/>
+            <point key="canvasLocation" x="2883" y="-2533"/>
         </scene>
         <!--Select Photo View Controller-->
         <scene sceneID="1wK-Wf-T3S">
@@ -409,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16L-jU-h9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4138" y="-1523"/>
+            <point key="canvasLocation" x="4109" y="-1482"/>
         </scene>
         <!--Select Photo Source View Controller-->
         <scene sceneID="WCj-wm-CpE">
