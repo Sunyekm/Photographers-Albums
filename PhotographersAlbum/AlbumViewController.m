@@ -63,6 +63,8 @@
         self.addInternetPhotoButton.enabled = NO;
         self.renameButton.enabled = NO;
         self.removePhotoButton.title = @"Done";
+        //self.removePhotoButton.tintColor =[UIColor blueColor];
+        
         [self.photoCollectionView setAllowsMultipleSelection:YES];
         
         
@@ -89,7 +91,9 @@
             self.addPhotoButton.enabled = YES;
             self.addInternetPhotoButton.enabled = YES;
             self.renameButton.enabled = YES;
-            self.removePhotoButton.title = @"Remove Album";
+            self.removePhotoButton.title = @"Remove";
+            //self.removePhotoButton.tintColor = [UIColor blackColor];
+            //self.removePhotoButton =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(removePhotoButtonTapped:)];
             [self.selectedPhotosToRemove removeAllObjects];
             [self reloadUI];
         }
@@ -434,7 +438,9 @@
     self.addPhotoButton.enabled = YES;
     self.addInternetPhotoButton.enabled = YES;
     self.renameButton.enabled = YES;
-    self.removePhotoButton.title = @"Remove Photos";
+    //self.removePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removePhotoButtonTapped:)];
+    self.removePhotoButton.title = @"remove";
+    //self.removePhotoButton.tintColor = [UIColor blackColor];
     [self.selectedPhotosToRemove removeAllObjects];
     [self reloadUI];
     

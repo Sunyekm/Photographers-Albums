@@ -32,7 +32,7 @@
 
 
 
-- (IBAction)tempHelp:(id)sender;
+
 - (IBAction)removeAlbumButtonTapped:(UIBarButtonItem *)sender;
 - (void) reloadUI;
 

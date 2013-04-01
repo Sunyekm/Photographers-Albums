@@ -18,19 +18,28 @@
 #import "Album.h"
 
 @interface ImageViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
+
+
 
 @property (strong, nonatomic) Album *album;
 @property (strong, nonatomic) id <ImageViewDelegate> delegate;
 
-@property (nonatomic) BOOL toolBarIsHidden;
 
-@property (nonatomic) BOOL currentPhotoIndex;
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender;
+- (IBAction)nextButtonTapped:(UIBarButtonItem *)sender;
+- (IBAction)previousButtonTapped:(UIBarButtonItem *)sender;
 
-- (IBAction)imageTapped:(UITapGestureRecognizer *)sender;
-- (IBAction)BackButtonTapped:(UINavigationItem *)sender;
+
+
+@property (nonatomic) BOOL interfaceIsHidden;
+
+@property (nonatomic) int currentPhotoIndex;
+
+-(void) nextPhoto;
+-(void) previousPhoto;
+
 @end

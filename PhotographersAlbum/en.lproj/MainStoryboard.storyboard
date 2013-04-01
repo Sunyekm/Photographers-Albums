@@ -50,8 +50,8 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FolderIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-7K-QDw">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="180" id="Yxk-sz-QNJ"/>
-                                                        <constraint firstAttribute="height" constant="180" id="eAB-yd-8WZ"/>
+                                                        <constraint firstAttribute="height" constant="215" id="UB5-md-TqZ"/>
+                                                        <constraint firstAttribute="width" constant="215" id="xT1-hF-Oia"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM3-tS-7JS">
@@ -59,19 +59,27 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-j5-k04">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="113" id="soD-GN-Xd2"/>
+                                                        <constraint firstAttribute="width" constant="114" id="tLj-Bc-fDD"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="DM3-tS-7JS" secondAttribute="trailing" constant="20" type="default" id="Njf-5P-C9j"/>
-                                            <constraint firstItem="Q8O-7K-QDw" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" constant="20" type="default" id="RuG-9s-GzX"/>
-                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="leading" secondItem="KFP-5B-sdM" secondAttribute="leading" constant="20" type="default" id="Rxm-2d-hOO"/>
+                                            <constraint firstItem="0B7-j5-k04" firstAttribute="centerX" secondItem="Q8O-7K-QDw" secondAttribute="centerX" type="default" id="M5a-rS-N8a"/>
+                                            <constraint firstAttribute="trailing" secondItem="DM3-tS-7JS" secondAttribute="trailing" constant="20" type="default" id="RBP-fg-RNS"/>
                                             <constraint firstAttribute="bottom" secondItem="DM3-tS-7JS" secondAttribute="bottom" constant="13" id="TZe-ob-oGS"/>
-                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="centerX" secondItem="Q8O-7K-QDw" secondAttribute="centerX" type="default" id="pxG-pn-cly"/>
+                                            <constraint firstItem="DM3-tS-7JS" firstAttribute="leading" secondItem="KFP-5B-sdM" secondAttribute="leading" constant="20" type="default" id="cd6-5B-NTw"/>
+                                            <constraint firstItem="Q8O-7K-QDw" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" type="default" id="hVI-kw-kmn"/>
+                                            <constraint firstItem="0B7-j5-k04" firstAttribute="centerX" secondItem="DM3-tS-7JS" secondAttribute="centerX" type="default" id="oa0-Nu-AnL"/>
+                                            <constraint firstItem="0B7-j5-k04" firstAttribute="top" secondItem="KFP-5B-sdM" secondAttribute="top" constant="68" id="tZI-09-oqB"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="albumTitleLabel" destination="DM3-tS-7JS" id="RxZ-1O-2jB"/>
-                                            <outlet property="coverPhoto" destination="Q8O-7K-QDw" id="IF6-Io-vt5"/>
+                                            <outlet property="coverPhoto" destination="0B7-j5-k04" id="No9-nC-XcD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -87,21 +95,16 @@
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-JE-2SI">
                                 <items>
-                                    <barButtonItem title="New Album" id="MKQ-ee-YXD">
+                                    <barButtonItem systemItem="add" id="MKQ-ee-YXD">
                                         <connections>
                                             <segue destination="sZu-p3-JV4" kind="modal" identifier="CreateNewAlbum" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="Jdl-Lj-cwT"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Help" id="Taf-Fx-GKw"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wPh-We-H2B"/>
                                     <barButtonItem title="Remove Album" id="ETV-wV-xUc">
                                         <connections>
                                             <action selector="removeAlbumButtonTapped:" destination="hZs-6o-1HF" id="5M7-Z5-EPd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Settings" id="Taf-Fx-GKw"/>
-                                    <barButtonItem title="Help" id="DUN-9q-UMn">
-                                        <connections>
-                                            <action selector="tempHelp:" destination="hZs-6o-1HF" id="FJa-Wn-Kc3"/>
-                                            <segue destination="Dg8-4w-rG8" kind="modal" id="7oI-ae-wgD"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -129,9 +132,8 @@
                     <connections>
                         <outlet property="addNewAlbumButton" destination="MKQ-ee-YXD" id="k46-hX-Ttd"/>
                         <outlet property="albumCollectionView" destination="08B-Ct-wqj" id="YSt-rD-7Us"/>
-                        <outlet property="helpButton" destination="DUN-9q-UMn" id="QKc-aR-Mh3"/>
+                        <outlet property="helpButton" destination="Taf-Fx-GKw" id="ZcS-Jh-Qhh"/>
                         <outlet property="removeAlbumButton" destination="ETV-wV-xUc" id="bqK-iV-ARc"/>
-                        <outlet property="settingButton" destination="Taf-Fx-GKw" id="gC8-Rk-CiE"/>
                         <segue destination="1eM-yx-uEe" kind="push" identifier="PushAlbumView" id="7m5-X4-4YZ"/>
                     </connections>
                 </viewController>
@@ -189,7 +191,7 @@
                             <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="USM-GK-bD3">
                                 <items>
                                     <navigationItem title="Album" id="cfW-oL-ns1">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="kql-VG-RM2">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="kql-VG-RM2">
                                             <connections>
                                                 <action selector="backButtonTapped:" destination="1eM-yx-uEe" id="NUI-je-gdw"/>
                                             </connections>
@@ -199,21 +201,22 @@
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="FzY-Ac-Fae">
                                 <items>
-                                    <barButtonItem title="Add Photos from Photo Library" id="A5q-uE-h9l">
+                                    <barButtonItem systemItem="add" id="A5q-uE-h9l">
                                         <connections>
                                             <action selector="AddPhotosButtonTapped:" destination="1eM-yx-uEe" id="pdc-Q4-MNI"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Add Internet Photos" id="dN5-s3-37V">
+                                    <barButtonItem title="Get Photos From Internet" id="dN5-s3-37V">
                                         <connections>
                                             <segue destination="h3f-K7-8MV" kind="modal" identifier="SelectPhotoSource" id="VHw-uh-7Rp"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Rename Album" id="QIs-z7-S5u">
+                                    <barButtonItem systemItem="edit" id="QIs-z7-S5u">
                                         <connections>
                                             <action selector="renameButtonTapped:" destination="1eM-yx-uEe" id="Tpe-Ed-rJM"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KAE-kK-puT"/>
                                     <barButtonItem title="Remove Photos" id="JOv-wQ-g0Z">
                                         <connections>
                                             <action selector="removePhotoButtonTapped:" destination="1eM-yx-uEe" id="1PM-iJ-0ID"/>
@@ -303,12 +306,12 @@
                             </collectionView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="2nJ-30-frT">
                                 <items>
-                                    <barButtonItem title="Cancel" id="dH3-0F-wPb">
+                                    <barButtonItem systemItem="cancel" id="dH3-0F-wPb">
                                         <connections>
                                             <action selector="cancelButtonTapped:" destination="Gbe-ly-RPI" id="9iJ-5m-7rO"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Done" id="kon-hW-Pj0">
+                                    <barButtonItem systemItem="done" id="kon-hW-Pj0">
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="Gbe-ly-RPI" id="aDX-tY-5WW"/>
                                         </connections>
@@ -355,59 +358,71 @@
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="es0-ZV-OGt">
-                                <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="k76-Ne-hxw">
-                                        <items>
-                                            <barButtonItem title="Rename" id="fwR-A1-arx"/>
-                                            <barButtonItem title="Delete" id="bVi-vT-vwy"/>
-                                            <barButtonItem title="Share" id="hfY-K4-AgX"/>
-                                        </items>
-                                    </toolbar>
-                                    <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="GdU-o2-Xpv">
-                                        <items>
-                                            <navigationItem title="Title" id="kEx-xh-8DP">
-                                                <barButtonItem key="leftBarButtonItem" title="Back" id="cQs-Sy-DII">
-                                                    <connections>
-                                                        <action selector="BackButtonTapped:" destination="hCy-1z-RIw" id="smb-KO-8Ex"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="k76-Ne-hxw" firstAttribute="top" secondItem="es0-ZV-OGt" secondAttribute="top" constant="704" id="2fD-Bq-G77"/>
-                                    <constraint firstItem="GdU-o2-Xpv" firstAttribute="top" secondItem="es0-ZV-OGt" secondAttribute="top" type="default" id="JKs-3k-jfv"/>
-                                    <constraint firstItem="k76-Ne-hxw" firstAttribute="centerX" secondItem="es0-ZV-OGt" secondAttribute="centerX" type="default" id="JpY-wT-rS6"/>
-                                    <constraint firstItem="k76-Ne-hxw" firstAttribute="leading" secondItem="es0-ZV-OGt" secondAttribute="leading" type="default" id="RIw-oW-Jqm"/>
-                                    <constraint firstItem="GdU-o2-Xpv" firstAttribute="leading" secondItem="es0-ZV-OGt" secondAttribute="leading" type="default" id="WqL-nj-DGg"/>
-                                    <constraint firstItem="k76-Ne-hxw" firstAttribute="bottom" secondItem="es0-ZV-OGt" secondAttribute="bottom" type="default" id="dbR-wE-W9d"/>
-                                    <constraint firstItem="GdU-o2-Xpv" firstAttribute="trailing" secondItem="es0-ZV-OGt" secondAttribute="trailing" type="default" id="lJ1-Ry-eaS"/>
-                                    <constraint firstItem="k76-Ne-hxw" firstAttribute="trailing" secondItem="es0-ZV-OGt" secondAttribute="trailing" type="default" id="vv0-lS-PVx"/>
-                                </constraints>
-                            </scrollView>
+                            <imageView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-RH-LWr">
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="i74-ed-Hq2" appends="YES" id="m6p-32-2Tr"/>
+                                </connections>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="BEN-s4-6W2">
+                                <items>
+                                    <navigationItem title="Title                    1 of 2" id="Z4O-4X-7qT">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="i1B-cp-gJC">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="hCy-1z-RIw" id="g46-y6-QhA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="pvv-a6-DvU">
+                                <items>
+                                    <barButtonItem systemItem="trash" id="pvv-PS-G9O"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dXV-Gg-RCg"/>
+                                    <barButtonItem systemItem="rewind" id="AVO-AT-n99">
+                                        <connections>
+                                            <action selector="previousButtonTapped:" destination="hCy-1z-RIw" id="20I-MC-p0b"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="y8O-pI-OE1"/>
+                                    <barButtonItem systemItem="fastForward" id="WT1-0C-lrb">
+                                        <connections>
+                                            <action selector="nextButtonTapped:" destination="hCy-1z-RIw" id="fI1-w8-18J"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="es0-ZV-OGt" firstAttribute="trailing" secondItem="sqB-o9-DwU" secondAttribute="trailing" type="default" id="842-re-E0v"/>
-                            <constraint firstItem="es0-ZV-OGt" firstAttribute="bottom" secondItem="sqB-o9-DwU" secondAttribute="bottom" type="default" id="cdW-8k-eT9"/>
-                            <constraint firstItem="es0-ZV-OGt" firstAttribute="leading" secondItem="sqB-o9-DwU" secondAttribute="leading" type="default" id="inw-v5-Ahj"/>
-                            <constraint firstItem="es0-ZV-OGt" firstAttribute="top" secondItem="sqB-o9-DwU" secondAttribute="top" type="default" id="l5a-Fu-Ic5"/>
+                            <constraint firstItem="pvv-a6-DvU" firstAttribute="leading" secondItem="sqB-o9-DwU" secondAttribute="leading" type="default" id="949-eh-ota"/>
+                            <constraint firstItem="BmT-RH-LWr" firstAttribute="top" secondItem="sqB-o9-DwU" secondAttribute="top" type="default" id="B1t-oV-UED"/>
+                            <constraint firstItem="BEN-s4-6W2" firstAttribute="leading" secondItem="sqB-o9-DwU" secondAttribute="leading" type="default" id="P5q-bS-07R"/>
+                            <constraint firstItem="BmT-RH-LWr" firstAttribute="trailing" secondItem="sqB-o9-DwU" secondAttribute="trailing" type="default" id="TeL-WZ-iib"/>
+                            <constraint firstItem="BEN-s4-6W2" firstAttribute="trailing" secondItem="sqB-o9-DwU" secondAttribute="trailing" type="default" id="dH3-Yb-gYY"/>
+                            <constraint firstItem="pvv-a6-DvU" firstAttribute="bottom" secondItem="sqB-o9-DwU" secondAttribute="bottom" type="default" id="fKo-rH-DMG"/>
+                            <constraint firstItem="BmT-RH-LWr" firstAttribute="leading" secondItem="sqB-o9-DwU" secondAttribute="leading" type="default" id="gwN-wY-QFS"/>
+                            <constraint firstItem="BmT-RH-LWr" firstAttribute="bottom" secondItem="sqB-o9-DwU" secondAttribute="bottom" type="default" id="les-cW-v5Y"/>
+                            <constraint firstItem="pvv-a6-DvU" firstAttribute="trailing" secondItem="sqB-o9-DwU" secondAttribute="trailing" type="default" id="m5C-N7-kTB"/>
+                            <constraint firstItem="BEN-s4-6W2" firstAttribute="top" secondItem="sqB-o9-DwU" secondAttribute="top" type="default" id="vek-oV-Qws"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="rUt-fS-boo"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="backButton" destination="cQs-Sy-DII" id="OJb-p2-2bD"/>
-                        <outlet property="imageScrollView" destination="es0-ZV-OGt" id="X79-rN-uJn"/>
-                        <outlet property="titleBar" destination="GdU-o2-Xpv" id="dxE-Gp-Srd"/>
-                        <outlet property="toolBar" destination="k76-Ne-hxw" id="yGi-Mw-WEZ"/>
+                        <outlet property="imageView" destination="BmT-RH-LWr" id="4sB-Fi-jZp"/>
+                        <outlet property="titleBar" destination="BEN-s4-6W2" id="Rhr-93-uUm"/>
+                        <outlet property="toolBar" destination="pvv-a6-DvU" id="yP0-xR-hbt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16L-jU-h9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="i74-ed-Hq2">
+                    <connections>
+                        <action selector="imageTapped:" destination="hCy-1z-RIw" id="S5L-SC-BHM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4109" y="-1482"/>
         </scene>
@@ -581,21 +596,6 @@
             </objects>
             <point key="canvasLocation" x="2883" y="-1436"/>
         </scene>
-        <!--Help View Controller - Help-->
-        <scene sceneID="qn9-wS-B0e">
-            <objects>
-                <viewController title="Help" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" id="Dg8-4w-rG8" customClass="HelpViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Vg-LY-27D">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cg4-aK-rQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2876" y="-476"/>
-        </scene>
     </scenes>
     <resources>
         <image name="FolderIcon.png" width="512" height="512"/>
@@ -631,16 +631,13 @@
                 <relationship kind="outlet" name="flickrThumbnail" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="HelpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
-        </class>
         <class className="ImageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
-                <relationship kind="action" name="BackButtonTapped:" candidateClass="UINavigationItem"/>
+                <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="imageTapped:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="imageScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="action" name="nextButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="previousButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
@@ -666,7 +663,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PAViewController.h"/>
             <relationships>
                 <relationship kind="action" name="removeAlbumButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="tempHelp:"/>
                 <relationship kind="outlet" name="addNewAlbumButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="albumCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="helpButton" candidateClass="UIBarButtonItem"/>

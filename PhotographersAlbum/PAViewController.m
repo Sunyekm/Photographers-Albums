@@ -258,11 +258,7 @@
 
  
 
-- (IBAction)tempHelp:(id)sender
-{
-    
-    [self reloadUI];
-}
+
 
 - (IBAction)removeAlbumButtonTapped:(UIBarButtonItem *)sender
 {

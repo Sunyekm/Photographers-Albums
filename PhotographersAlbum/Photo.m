@@ -10,6 +10,15 @@
 
 @implementation Photo
 
+//-(float) xOffset
+//{
+//    if (!_xOffset)
+//    {
+//        _xOffset = 0.0;
+//    }
+//    return _xOffset;
+//}
+
 
 -(UIImage *) image
 {
@@ -38,19 +47,49 @@
             
             
             float sizeScale;
-            if (image.size.height > image.size.width)
+            if (image.size.height >= image.size.width)
             {
-                sizeScale = 1024/image.size.height;
+                sizeScale = 768.0/image.size.height;
+                _image = [self scaleImage:image toScale:sizeScale];
+                
+                float dif= 1024.0 - image.size.width;
+                
+                NSLog(@"%f", dif);
+                
+                dif = dif /2.0;
+                
+                NSLog(@"%f", dif);
+                
+                _xOffset = dif;//(1024.0 - image.size.width);
+                _yOffset = 0.0;
+                
+                
             }
             else
             {
-                sizeScale = 1024/image.size.width;
+                sizeScale = 1024.0/image.size.width;
+                _image = [self scaleImage:image toScale:sizeScale];
+                
+                float dif= 768.0 - image.size.height;
+                
+                NSLog(@"%f", dif);
+                
+                dif = dif /2.0;
+                
+                NSLog(@"%f", dif);
+                
+                _xOffset = 0.0;
+                _yOffset = dif; //(768.0 - image.size.height);
             }
-            _image = [self scaleImage:image toScale:sizeScale];
+            
             
         }
     }
     
+    NSLog(@"%f", _image.size.width);
+    NSLog(@"%f", _image.size.height);
+    NSLog(@"%f", _xOffset);
+    NSLog(@"%f", _yOffset);
     
     
     return _image;
@@ -86,7 +125,7 @@
 {
     if (!_title)
     {
-        _title = @"New Photo";
+        _title = @"";
     }
     return _title;
 }
