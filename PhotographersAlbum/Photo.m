@@ -49,37 +49,32 @@
             float sizeScale;
             if (image.size.height >= image.size.width)
             {
-                sizeScale = 768.0/image.size.height;
-                _image = [self scaleImage:image toScale:sizeScale];
-                
-                float dif= 1024.0 - image.size.width;
-                
-                NSLog(@"%f", dif);
-                
-                dif = dif /2.0;
-                
-                NSLog(@"%f", dif);
-                
-                _xOffset = dif;//(1024.0 - image.size.width);
-                _yOffset = 0.0;
+                if (image.size.height > 2048)
+                {
+                    sizeScale = 768.0/image.size.height;
+                    _image = [self scaleImage:image toScale:sizeScale];
+                }
+                else
+                {
+                    _image = image;
+                }
                 
                 
             }
             else
             {
-                sizeScale = 1024.0/image.size.width;
-                _image = [self scaleImage:image toScale:sizeScale];
-                
-                float dif= 768.0 - image.size.height;
-                
-                NSLog(@"%f", dif);
-                
-                dif = dif /2.0;
-                
-                NSLog(@"%f", dif);
-                
-                _xOffset = 0.0;
-                _yOffset = dif; //(768.0 - image.size.height);
+                if (image.size.width > 2048)
+                {
+                    sizeScale = 1024.0/image.size.width;
+                    _image = [self scaleImage:image toScale:sizeScale];
+
+                }
+                else
+                {
+                    _image = image;
+                }
+
+
             }
             
             
@@ -88,8 +83,7 @@
     
     NSLog(@"%f", _image.size.width);
     NSLog(@"%f", _image.size.height);
-    NSLog(@"%f", _xOffset);
-    NSLog(@"%f", _yOffset);
+
     
     
     return _image;

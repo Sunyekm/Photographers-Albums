@@ -10,6 +10,6 @@
 
 @interface PAAlbumCoverCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *albumTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *coverPhoto;
+@property (strong, nonatomic) IBOutlet UIImageView *coverPhoto;
 
 @end

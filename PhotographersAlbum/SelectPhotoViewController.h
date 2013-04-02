@@ -19,6 +19,8 @@
 #import "Album.h"
 #import "FlickrCell.h"
 #import "FlickrFetcher.h"
+#import <dispatch/dispatch.h>
+
 
 @interface SelectPhotoViewController : UIViewController
 

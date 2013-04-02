@@ -25,13 +25,15 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+//-(UIImageView *)coverPhoto
+//{
+//    if (!_coverPhoto) {
+//        _coverPhoto = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:@"default_image.png"]];
+//        
+//    }
+//    return _coverPhoto;
+//}
+
+
 
 @end

@@ -11,7 +11,7 @@
 #import "AddAlbumViewController.h"
 #import "PAAlbumCoverCell.h"
 #import "AlbumViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 
 

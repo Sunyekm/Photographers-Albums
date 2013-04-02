@@ -204,6 +204,7 @@
     
     photo = [self.album.photos objectAtIndex:indexPath.item];
     
+    cell.photoThumbnail.contentMode = UIViewContentModeScaleAspectFill;
     cell.photoThumbnail.image = photo.thumbnail;
     //cell.photoTitle.text = photo.title;
     
@@ -450,6 +451,11 @@
 -(void) imageViewFinished
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) writeAlbumChangesToDatabase
+{
+    [self reloadUI];
 }
 
 @end

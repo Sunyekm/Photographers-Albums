@@ -155,9 +155,7 @@
     
 }
 
-//- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-//    return 1;
-//}
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -165,14 +163,19 @@
     
     Photo *photo = [self.photos objectAtIndex:indexPath.item];
     
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:photo.imageThumbnailUrl]];
+    
+    
+    
+    
+    cell.flickrThumbnail.image = [UIImage imageWithData:imageData];
+    
 //    NSLog(@"%d", indexPath.item);
 //    NSLog(photo.imageThumbnailUrl);
 //    NSLog(photo.imageUrl);
 //    NSLog(photo.title);
     
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:photo.imageThumbnailUrl]];
-    
-    cell.flickrThumbnail.image = [[UIImage alloc] initWithData:imageData];
+        
     
     
     

@@ -118,11 +118,13 @@
 				8C1DA7D216F1694800A32438 /* FlickrFetcher.m */,
 			);
 			name = "Flickr Fetcher";
+			path = PhotographersAlbum;
 			sourceTree = "<group>";
 		};
 		8C7D594116C47CE700DA099D = {
 			isa = PBXGroup;
 			children = (
+				8C1DA7CF16F1690800A32438 /* Flickr Fetcher */,
 				8C7D595316C47CE700DA099D /* PhotographersAlbum */,
 				8C7D594C16C47CE700DA099D /* Frameworks */,
 				8C7D594B16C47CE700DA099D /* Products */,
@@ -152,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				8CA4DC0C16FE52A000BCC221 /* GUI */,
-				8C1DA7CF16F1690800A32438 /* Flickr Fetcher */,
 				8CAF005B16EAA61A0013937B /* Icons */,
 				8C7D597016C48E8E00DA099D /* Model */,
 				8C7D596516C47CE700DA099D /* MainStoryboard.storyboard */,
@@ -410,6 +411,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotographersAlbum/PhotographersAlbum-Prefix.pch";
 				INFOPLIST_FILE = "PhotographersAlbum/PhotographersAlbum-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,6 +426,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotographersAlbum/PhotographersAlbum-Prefix.pch";
 				INFOPLIST_FILE = "PhotographersAlbum/PhotographersAlbum-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface FlickrCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *flickrThumbnail;
+
 
 @end

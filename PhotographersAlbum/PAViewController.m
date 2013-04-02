@@ -37,6 +37,8 @@
     [self loadDatabase];
     
     [self reloadUI];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -217,7 +219,7 @@
     }
     
     
-    NSLog([self.albumDatabase description]);
+    //NSLog([self.albumDatabase description]);
     
 }
 //Data persistence -------------------------- TO BE TESTED /////////////////////////////////
@@ -347,6 +349,7 @@
     Album *album =[self.albums.albums objectAtIndex:indexPath.item];
     cell.albumTitleLabel.text = album.title;
     
+    cell.coverPhoto.contentMode = UIViewContentModeScaleAspectFill;
     
     if (album.coverPhoto)
     {
@@ -354,6 +357,19 @@
         cell.coverPhoto.image =  album.coverPhoto.thumbnail;
         
     }
+    
+    
+    
+    cell.coverPhoto.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:1.0].CGColor;
+    cell.coverPhoto.layer.borderWidth = 5.0;
+    cell.coverPhoto.layer.shadowOffset = CGSizeMake(0, 3);
+    cell.coverPhoto.layer.shadowOpacity = 0.7;
+    cell.coverPhoto.layer.shouldRasterize = YES;
+
+    album = nil;
+    
+    
+    
     
     return cell;
 }

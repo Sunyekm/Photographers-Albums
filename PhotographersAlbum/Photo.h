@@ -17,8 +17,7 @@
 @property (strong, nonatomic) NSString *imageUrl;
 @property (strong, nonatomic) NSString *imageThumbnailUrl;
 @property (nonatomic) BOOL isLocalFile;
-@property (nonatomic) float xOffset;
-@property (nonatomic) float yOffset;
+
 
 
 

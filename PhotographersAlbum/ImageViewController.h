@@ -11,17 +11,20 @@
 @protocol ImageViewDelegate <NSObject>
 
 -(void) imageViewFinished;
+-(void) writeAlbumChangesToDatabase;
 
 @end
 
 #import <UIKit/UIKit.h>
 #import "Album.h"
+#import "Photo.h"
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
+@property (weak, nonatomic) IBOutlet UILabel *toolBarTitleLabel;
 
 
 
@@ -32,6 +35,8 @@
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction)nextButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction)previousButtonTapped:(UIBarButtonItem *)sender;
+- (IBAction)trashButtonTapped:(UIBarButtonItem *)sender;
+
 
 
 
