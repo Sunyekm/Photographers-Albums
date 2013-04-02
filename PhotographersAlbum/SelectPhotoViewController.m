@@ -161,14 +161,22 @@
 {
     FlickrCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
     
-    Photo *photo = [self.photos objectAtIndex:indexPath.item];
+    cell.flickrThumbnail.image = [UIImage imageNamed:@"default_image.png"];
     
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:photo.imageThumbnailUrl]];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        Photo *photo = [self.photos objectAtIndex:indexPath.item];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:photo.imageThumbnailUrl]];
+        UIImage *image = [UIImage imageWithData:imageData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.flickrThumbnail.image = image;
+        });
+    });
     
     
     
     
-    cell.flickrThumbnail.image = [UIImage imageWithData:imageData];
+    
     
 //    NSLog(@"%d", indexPath.item);
 //    NSLog(photo.imageThumbnailUrl);
