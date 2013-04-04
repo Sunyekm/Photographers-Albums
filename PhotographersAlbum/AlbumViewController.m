@@ -170,6 +170,8 @@
     }
     
     [self.delegate writeAlbumsToDatabase];
+    
+    self.albumBar.topItem.title = self.album.title;
 }
 
 
@@ -200,14 +202,25 @@
     //cell.backgroundColor = [UIColor whiteColor];
     //Album *album =[self.albums.albums objectAtIndex:indexPath.item];
     //cell.albumTitleLabel.text = album.title;
-    Photo *photo;
     
-    photo = [self.album.photos objectAtIndex:indexPath.item];
     
-    cell.photoThumbnail.contentMode = UIViewContentModeScaleAspectFill;
-    cell.photoThumbnail.image = photo.thumbnail;
-    //cell.photoTitle.text = photo.title;
     
+    
+    
+    cell.photoThumbnail.image = [UIImage imageNamed:@"default_image.png"];
+    
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        Photo *photo;
+        photo = [self.album.photos objectAtIndex:indexPath.item];
+        UIImage *image = photo.thumbnail;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.photoThumbnail.contentMode = UIViewContentModeScaleAspectFill;
+            cell.photoThumbnail.image = image;
+        });
+    });
+
     
     return cell;
 }
@@ -224,27 +237,10 @@
     else
     {
         
-        //TODO ----- popup a view to show a photo
+                
         
         
-        
-//        UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//        scroll.pagingEnabled = YES;
-//        NSInteger numberOfViews = [self.album.photos count];
-//        int xPosition = 0;
-//        for (Photo* photo in self.album.photos) {
-//            UIImage * image = photo.image;
-//            CGRect rect = CGRectMake(xPosition, 90.0f, image.size.width, image.size.height);
-//            
-//            UIImageView * imageView = [[UIImageView alloc] initWithFrame:rect];
-//            [imageView setImage:image];
-//            self.view.backgroundColor = [UIColor whiteColor];
-//            [scroll addSubview:imageView];
-//            xPosition += image.size.width;
-//        }
-//        scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
-//        
-//        [self.view addSubview:scroll];
+
         [self performSegueWithIdentifier:@"ShowAPhoto"
                                   sender:self];
         
@@ -270,6 +266,19 @@
     
 
     if(![self isBeingDismissed]) {
+        
+        self.mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        
+        self.mySpinner.frame = CGRectMake(0, 0, 24, 24);
+        
+        
+        self.mySpinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+        self.mySpinner.hidesWhenStopped = YES;
+        
+        [self.view addSubview:self.mySpinner];
+        
+        [self.mySpinner startAnimating];
+        
         [self dismissViewControllerAnimated:YES completion:^ {
             [self performSegueWithIdentifier:@"SelectPhotos" sender:self];
         }];
@@ -294,17 +303,19 @@
 //    NSLog(@"======================----------=========================");
 //    NSLog(@"%d", [sender.selectedPhotos count]);
     for (Photo *photo in sender.selectedPhotos) {
-//        NSLog(@"%@", photo);
+
         
         [self.album addPhoto:photo];
     }
     
     [self reloadUI];
+    [self.mySpinner stopAnimating];
 }
 
 -(void) cancelled
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.mySpinner stopAnimating];
 }
 
 
@@ -344,6 +355,14 @@
         NSIndexPath *index= [self.photoCollectionView indexPathsForSelectedItems][0];
         imageVC.currentPhotoIndex = index.item;
         
+    }
+    
+    if ([[segue identifier] isEqualToString:@"EditAAlbum"])
+    {
+        EditAlbumViewController *editAlbumVC = [segue destinationViewController];
+        
+        editAlbumVC.delegate = self;
+        editAlbumVC.album = self.album;
     }
     
 }
@@ -457,6 +476,23 @@
 {
     [self reloadUI];
 }
+
+
+#pragma mark -- EditAlbumDelegate
+-(void) editAlbumFinished
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self reloadUI];
+}
+
+-(void) editAlbumCancelled
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 
 @end
 

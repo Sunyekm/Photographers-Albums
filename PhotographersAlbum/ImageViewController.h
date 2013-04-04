@@ -46,5 +46,6 @@
 
 -(void) nextPhoto;
 -(void) previousPhoto;
+-(void) preloadPhots;
 
 @end

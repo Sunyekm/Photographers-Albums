@@ -24,6 +24,7 @@
 #import "SelectPhotoSourceViewController.h"
 #import "SelectPhotoViewController.h"
 #import "ImageViewController.h"
+#import "EditAlbumViewController.h"
 
 enum photoSourceType
 {
@@ -33,7 +34,7 @@ enum photoSourceType
 };
 
 
-@interface AlbumViewController  : UIViewController <SelectPhotoSourceDelegate, SelectPhotoDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,ImageViewDelegate>
+@interface AlbumViewController  : UIViewController <SelectPhotoSourceDelegate, SelectPhotoDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,ImageViewDelegate,EditAlbumDelegate>
 
 
 @property (strong, nonatomic) Album *album;
@@ -52,6 +53,8 @@ enum photoSourceType
 
 @property (strong, nonatomic) NSMutableArray *selectedPhotosToRemove;
 @property (strong, nonatomic) UIPopoverController *selectPhotoPopoverController;
+
+@property (strong, nonatomic) UIActivityIndicatorView *mySpinner;
 
 
 - (IBAction)removePhotoButtonTapped:(UIBarButtonItem *)sender;

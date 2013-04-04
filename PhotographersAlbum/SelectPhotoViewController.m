@@ -47,13 +47,16 @@
     [self.flickrCV setAllowsMultipleSelection:YES];
     self.selectedPhotos = nil;
     
+    
+    
+    
+    
+    
     self.flickrPhotos = [FlickrFetcher stanfordPhotos];
-    
-    
-    
-    
-    
+        
     [self loadFlickrPhotos];
+    
+    
     
         
     

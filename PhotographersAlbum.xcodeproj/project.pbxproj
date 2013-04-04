@@ -35,6 +35,7 @@
 		8CAF005A16EA89DB0013937B /* Icon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CAF005916EA89DB0013937B /* Icon144.png */; };
 		8CDFABD816F2DD420053E050 /* PAAlbumCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDFABD716F2DD420053E050 /* PAAlbumCoverCell.m */; };
 		8CDFABDB16F3BD220053E050 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDFABDA16F3BD220053E050 /* AlbumViewController.m */; };
+		8CEC7ABF170BE61E005A0809 /* EditAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC7ABE170BE61E005A0809 /* EditAlbumViewController.m */; };
 		8CFB348216FD197100DFDC36 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB348116FD197100DFDC36 /* HelpViewController.m */; };
 		8CFB348416FD1DE600DFDC36 /* albumIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB348316FD1DE600DFDC36 /* albumIcon.png */; };
 		8CFB348616FD1ED900DFDC36 /* FolderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB348516FD1ED900DFDC36 /* FolderIcon.png */; };
@@ -87,6 +88,8 @@
 		8CDFABD716F2DD420053E050 /* PAAlbumCoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAAlbumCoverCell.m; sourceTree = "<group>"; };
 		8CDFABD916F3BD220053E050 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		8CDFABDA16F3BD220053E050 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		8CEC7ABD170BE61E005A0809 /* EditAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlbumViewController.h; sourceTree = "<group>"; };
+		8CEC7ABE170BE61E005A0809 /* EditAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlbumViewController.m; sourceTree = "<group>"; };
 		8CFB348016FD197100DFDC36 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		8CFB348116FD197100DFDC36 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		8CFB348316FD1DE600DFDC36 /* albumIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = albumIcon.png; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				8C7DF546170123F100CE77B0 /* FlickrCell.m */,
 				8C240DD51706B38C007D35AE /* ImageViewController.h */,
 				8C240DD61706B38C007D35AE /* ImageViewController.m */,
+				8CEC7ABD170BE61E005A0809 /* EditAlbumViewController.h */,
+				8CEC7ABE170BE61E005A0809 /* EditAlbumViewController.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				8CA4DC0F16FE539D00BCC221 /* SelectPhotoViewController.m in Sources */,
 				8C7DF547170123F100CE77B0 /* FlickrCell.m in Sources */,
 				8C240DD71706B38C007D35AE /* ImageViewController.m in Sources */,
+				8CEC7ABF170BE61E005A0809 /* EditAlbumViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

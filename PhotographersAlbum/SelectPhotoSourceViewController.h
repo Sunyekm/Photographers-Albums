@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) id <SelectPhotoSourceDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UIButton *addFromWindowsButton;
+@property (weak, nonatomic) IBOutlet UIButton *addFromFacebook;
 
 - (IBAction)addFromFlickrTapped:(UIButton *)sender;
 - (IBAction)addFromWindowsTapped:(UIButton *)sender;

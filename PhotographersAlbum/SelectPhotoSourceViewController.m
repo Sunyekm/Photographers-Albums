@@ -29,6 +29,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    //Didn't implement yet.
+    
+    self.addFromFacebook.enabled = NO;
+    self.addFromWindowsButton.alpha = 0.6;
+    self.addFromWindowsButton.enabled =NO;
+    self.addFromFacebook.alpha = 0.6;
 }
 
 

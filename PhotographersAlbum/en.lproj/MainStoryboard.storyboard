@@ -214,6 +214,7 @@
                                     <barButtonItem systemItem="edit" id="QIs-z7-S5u">
                                         <connections>
                                             <action selector="renameButtonTapped:" destination="1eM-yx-uEe" id="Tpe-Ed-rJM"/>
+                                            <segue destination="eWi-qq-HnC" kind="modal" identifier="EditAAlbum" modalPresentationStyle="formSheet" id="rzt-zY-TBz"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KAE-kK-puT"/>
@@ -455,12 +456,98 @@
             </objects>
             <point key="canvasLocation" x="4109" y="-1482"/>
         </scene>
+        <!--Edit Album View Controller-->
+        <scene sceneID="IZ8-bT-9wa">
+            <objects>
+                <viewController id="eWi-qq-HnC" customClass="EditAlbumViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uae-gM-a4d">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="3qN-v4-f27">
+                                <items>
+                                    <navigationItem title="Edit Album" id="RJm-oo-QYa"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="New Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTY-lw-Ltf">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RxH-KG-aHP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="fLP-KL-RHz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eWi-qq-HnC" id="1it-gO-3uB"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKe-WP-f3L">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="fZv-lM-QiB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonTapped:" destination="eWi-qq-HnC" eventType="touchUpInside" id="Ne4-qD-d16"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ark-sW-2yF">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="eWi-qq-HnC" eventType="touchUpInside" id="o24-ot-OUj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RTY-lw-Ltf" firstAttribute="leading" secondItem="uae-gM-a4d" secondAttribute="leading" constant="147" id="0DD-Nv-bSJ"/>
+                            <constraint firstItem="RTY-lw-Ltf" firstAttribute="top" secondItem="uae-gM-a4d" secondAttribute="top" constant="176" id="2ko-SB-2uw"/>
+                            <constraint firstItem="RxH-KG-aHP" firstAttribute="leading" secondItem="ark-sW-2yF" secondAttribute="leading" type="default" id="4sn-uu-LPP"/>
+                            <constraint firstItem="RxH-KG-aHP" firstAttribute="leading" secondItem="RTY-lw-Ltf" secondAttribute="leading" type="default" id="96g-BG-csu"/>
+                            <constraint firstItem="RxH-KG-aHP" firstAttribute="top" secondItem="RTY-lw-Ltf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9FX-qz-mUg"/>
+                            <constraint firstItem="ark-sW-2yF" firstAttribute="top" secondItem="uae-gM-a4d" secondAttribute="top" constant="258" id="IZy-Lt-Mel"/>
+                            <constraint firstItem="3qN-v4-f27" firstAttribute="trailing" secondItem="uae-gM-a4d" secondAttribute="trailing" type="default" id="SrP-4x-WZl"/>
+                            <constraint firstItem="3qN-v4-f27" firstAttribute="top" secondItem="uae-gM-a4d" secondAttribute="top" type="default" id="ggD-0e-978"/>
+                            <constraint firstItem="3qN-v4-f27" firstAttribute="leading" secondItem="uae-gM-a4d" secondAttribute="leading" type="default" id="ldj-Bq-Dm4"/>
+                            <constraint firstItem="bKe-WP-f3L" firstAttribute="trailing" secondItem="RxH-KG-aHP" secondAttribute="trailing" type="default" id="qrz-yi-1TX"/>
+                            <constraint firstItem="bKe-WP-f3L" firstAttribute="baseline" secondItem="ark-sW-2yF" secondAttribute="baseline" type="default" id="zx6-T4-Rgi"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="changeNameTextField" destination="RxH-KG-aHP" id="Ff1-r5-yGN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bu8-XU-AFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3466" y="-1436"/>
+        </scene>
         <!--Select Photo Source View Controller-->
         <scene sceneID="WCj-wm-CpE">
             <objects>
                 <viewController modalPresentationStyle="formSheet" id="h3f-K7-8MV" customClass="SelectPhotoSourceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aUU-6u-iZK">
-                        <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-P8-5LN">
@@ -468,7 +555,7 @@
                                     <constraint firstAttribute="width" constant="286" id="iCF-ho-ef6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add from Flickr">
+                                <state key="normal" title="Add Photos from Flickr">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -518,24 +605,37 @@
                                     <action selector="cancelButtonTapped:" destination="h3f-K7-8MV" eventType="touchUpInside" id="okU-fA-RCN"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="gJJ-rv-rXd">
+                                <items>
+                                    <navigationItem title="Select a Source to Add Photos" id="Cmv-ad-b6e"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SQa-Ke-TxE" firstAttribute="top" secondItem="bbr-P8-5LN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="24A-xs-olw"/>
+                            <constraint firstItem="gJJ-rv-rXd" firstAttribute="leading" secondItem="aUU-6u-iZK" secondAttribute="leading" type="default" id="2l6-Na-sOm"/>
                             <constraint firstItem="SQa-Ke-TxE" firstAttribute="trailing" secondItem="bbr-P8-5LN" secondAttribute="trailing" type="default" id="7Cr-Fk-p2l"/>
                             <constraint firstItem="5vM-3j-rHs" firstAttribute="leading" secondItem="SQa-Ke-TxE" secondAttribute="leading" type="default" id="8go-7d-8ia"/>
                             <constraint firstItem="SQa-Ke-TxE" firstAttribute="leading" secondItem="bbr-P8-5LN" secondAttribute="leading" type="default" id="BwA-od-JWl"/>
                             <constraint firstAttribute="bottom" secondItem="08E-1Y-2aE" secondAttribute="bottom" constant="53" id="EgW-HG-2nB"/>
                             <constraint firstItem="bbr-P8-5LN" firstAttribute="top" secondItem="aUU-6u-iZK" secondAttribute="top" constant="108" id="HMy-U8-KFI"/>
                             <constraint firstItem="5vM-3j-rHs" firstAttribute="top" secondItem="SQa-Ke-TxE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IO5-Tg-GsD"/>
+                            <constraint firstItem="gJJ-rv-rXd" firstAttribute="centerX" secondItem="bbr-P8-5LN" secondAttribute="centerX" type="default" id="MAC-Gn-w74"/>
                             <constraint firstItem="08E-1Y-2aE" firstAttribute="trailing" secondItem="5vM-3j-rHs" secondAttribute="trailing" type="default" id="NcC-1R-pyP"/>
-                            <constraint firstItem="08E-1Y-2aE" firstAttribute="centerX" secondItem="aUU-6u-iZK" secondAttribute="centerX" type="default" id="R0l-rR-yYU"/>
+                            <constraint firstItem="gJJ-rv-rXd" firstAttribute="top" secondItem="aUU-6u-iZK" secondAttribute="top" type="default" id="oRl-5g-8a5"/>
                             <constraint firstItem="5vM-3j-rHs" firstAttribute="trailing" secondItem="SQa-Ke-TxE" secondAttribute="trailing" type="default" id="tue-Rn-2Am"/>
+                            <constraint firstItem="gJJ-rv-rXd" firstAttribute="trailing" secondItem="aUU-6u-iZK" secondAttribute="trailing" type="default" id="xzj-ja-9cT"/>
                             <constraint firstItem="08E-1Y-2aE" firstAttribute="leading" secondItem="5vM-3j-rHs" secondAttribute="leading" type="default" id="ycK-FA-x5a"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="addFromFacebook" destination="5vM-3j-rHs" id="JwW-ud-M0X"/>
+                        <outlet property="addFromWindowsButton" destination="SQa-Ke-TxE" id="Mhy-LN-aRe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xr4-WF-Cmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -630,6 +730,114 @@
         <image name="FolderIcon.png" width="512" height="512"/>
         <image name="default_image.png" width="250" height="250"/>
     </resources>
+    <classes>
+        <class className="AddAlbumViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelCreateAlbum:" candidateClass="UIButton"/>
+                <relationship kind="action" name="createButtonTapped:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="albumNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AlbumViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="AddPhotosButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="removePhotoButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="renameButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addInternetPhotoButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addPhotoButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="albumBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="photoCollectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="removePhotoButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="renameButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EditAlbumViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="okButtonTapped:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="changeNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FlickrCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="flickrThumbnail" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="nextButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="previousButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="trashButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="toolBarTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PAAlbumCoverCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PAAlbumCoverCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albumTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coverPhoto" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="PAPhotoCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PAPhotoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="photoThumbnail" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="PAViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PAViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="removeAlbumButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addNewAlbumButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="albumCollectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="helpButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="removeAlbumButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="settingButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SelectPhotoSourceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectPhotoSourceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addFromFacebookTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addFromFlickrTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="addFromWindowsTapped:" candidateClass="UIButton"/>
+                <relationship kind="action" name="cancelButtonTapped:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFromFacebook" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFromWindowsButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SelectPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="doneButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="flickrCV" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -99,7 +99,10 @@
     self.imageView.image = photo.image;
 }
 
-
+-(void) preloadPhotos
+{
+    
+}
 
 -(void) nextPhoto
 {
