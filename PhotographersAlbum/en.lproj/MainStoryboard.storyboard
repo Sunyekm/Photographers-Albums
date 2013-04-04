@@ -437,6 +437,10 @@
                             <constraint firstItem="BEN-s4-6W2" firstAttribute="top" secondItem="sqB-o9-DwU" secondAttribute="top" type="default" id="vek-oV-Qws"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dHH-8g-LsZ" appends="YES" id="FBE-EK-BG5"/>
+                            <outletCollection property="gestureRecognizers" destination="PKa-7z-lDr" appends="YES" id="iOZ-AT-6al"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="rUt-fS-boo"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -453,6 +457,16 @@
                         <action selector="imageTapped:" destination="hCy-1z-RIw" id="S5L-SC-BHM"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="dHH-8g-LsZ" userLabel="Swipe LeftToRight Gesture Recognizer">
+                    <connections>
+                        <action selector="swipedToRight:" destination="hCy-1z-RIw" id="Qog-Lo-lLG"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="PKa-7z-lDr" userLabel="Swipe RightToLeft Gesture Recognizer">
+                    <connections>
+                        <action selector="swipedToLeft:" destination="hCy-1z-RIw" id="7Fz-Wv-rnn"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4109" y="-1482"/>
         </scene>
@@ -772,8 +786,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="imageTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="nextButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="previousButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="swipedToLeft:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="swipedToRight:" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="action" name="trashButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
@@ -836,6 +853,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

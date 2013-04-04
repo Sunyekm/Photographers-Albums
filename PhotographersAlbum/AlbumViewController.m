@@ -238,7 +238,9 @@
     {
         
                 
+        [self initilizeSpinner];
         
+        [self.mySpinner startAnimating];
         
 
         [self performSegueWithIdentifier:@"ShowAPhoto"
@@ -246,6 +248,11 @@
         
         
         [self.photoCollectionView deselectItemAtIndexPath:indexPath animated:YES];
+        
+        
+        
+        
+        
     }
     
     
@@ -259,14 +266,12 @@
     }
 }
 
-#pragma mark - SelectPhotoSourceDelegate
--(void) photoSourceSelected: (SelectPhotoSourceViewController *)sender
-{
-    
-    
+#pragma mark -- initilize spinner
 
-    if(![self isBeingDismissed]) {
-        
+- (void) initilizeSpinner
+{
+    if (!self.mySpinner)
+    {
         self.mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         self.mySpinner.frame = CGRectMake(0, 0, 24, 24);
@@ -276,6 +281,20 @@
         self.mySpinner.hidesWhenStopped = YES;
         
         [self.view addSubview:self.mySpinner];
+    }
+}
+
+#pragma mark - SelectPhotoSourceDelegate
+-(void) photoSourceSelected: (SelectPhotoSourceViewController *)sender
+{
+    
+    
+
+    if(![self isBeingDismissed]) {
+        
+        [self initilizeSpinner];
+        
+        
         
         [self.mySpinner startAnimating];
         
@@ -469,6 +488,8 @@
 #pragma mark -- ImageViewControllerDelegate
 -(void) imageViewFinished
 {
+    [self.mySpinner stopAnimating];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

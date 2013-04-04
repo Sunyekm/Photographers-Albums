@@ -38,7 +38,8 @@
 - (IBAction)trashButtonTapped:(UIBarButtonItem *)sender;
 
 
-
+@property (strong, nonatomic) UIImage *preLoadPhotoPrevious;
+@property (strong, nonatomic) UIImage *preLoadPhotoNext;
 
 @property (nonatomic) BOOL interfaceIsHidden;
 
@@ -46,6 +47,6 @@
 
 -(void) nextPhoto;
 -(void) previousPhoto;
--(void) preloadPhots;
+-(void) preloadPhotos;
 
 @end
