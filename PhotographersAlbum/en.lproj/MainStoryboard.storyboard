@@ -349,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27H-z0-DNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4132" y="-2418"/>
+            <point key="canvasLocation" x="4708" y="-2533"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="NTY-4L-q6A">
@@ -468,7 +468,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4109" y="-1482"/>
+            <point key="canvasLocation" x="4708" y="-1694"/>
         </scene>
         <!--Edit Album View Controller-->
         <scene sceneID="IZ8-bT-9wa">
@@ -786,11 +786,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="imageTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="nextButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="previousButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="swipedToLeft:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="swipedToRight:" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="action" name="trashButtonTapped:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
@@ -853,9 +850,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -30,7 +30,8 @@
 
 @property (strong, nonatomic) Album *album;
 @property (strong, nonatomic) id <ImageViewDelegate> delegate;
-
+@property (nonatomic) BOOL interfaceIsHidden;
+@property (nonatomic) int currentPhotoIndex;
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction)nextButtonTapped:(UIBarButtonItem *)sender;
@@ -41,9 +42,7 @@
 @property (strong, nonatomic) UIImage *preLoadPhotoPrevious;
 @property (strong, nonatomic) UIImage *preLoadPhotoNext;
 
-@property (nonatomic) BOOL interfaceIsHidden;
 
-@property (nonatomic) int currentPhotoIndex;
 
 -(void) nextPhoto;
 -(void) previousPhoto;
